@@ -1,0 +1,106 @@
+
+    <main class="home">
+        <div class="title" id="titlematches">
+            <h1>Jouw Profiel</h1>
+            <div>
+                <button>Zoek matches</button>
+        </div>
+    </div>
+   <div class="profielcontainer1"></div>
+  {{#each profile.you}}
+        <div id="jouwprofiel">
+                <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
+                <div class="profielcontainer">
+                <div>
+                    <img src="{{profielFotoUrl}}"> 
+                  </div>
+                  <div class="profielinfo">
+                    <p>Jij bent een <strong>{{type}}</strong></p>
+                    <p>Jij zoekt een {{zoekType}}</p>
+                    <a> Instellingen</a>
+                    <a class="bekijkbucketlist">Bekijk bucketlist</a>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+    
+
+
+</main>
+<section class="timeline">
+        <h2 class="timelinetitle">Timeline</h2>
+  <h2>Bekijk de status van jouw matches</h2>
+
+<section class="insert">
+<form action="/insert" method="post">
+<div class="input">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="title">
+</div>
+<div class="input">
+  <label for="content">Content</label>
+  <input type="text" id="content" name="content">
+</div>
+<div class="input">
+  <label for="author">Author</label>
+  <input type="author" id="author" name="author">
+</div>
+<button type="sumbit">Insert</button>
+</form>
+
+</section>
+<div class="matchul"></div>
+
+
+  
+  {{!-- {{#each userdb}}
+   
+    <div class="matchprofiel">
+        <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
+        <div class="profielcontainer">
+        <div>
+            <img src="images/profile/{{profielFotoUrl}}"> 
+          </div>
+          <div class="profielinfo">
+            <p>{{wilGraag}}
+                </p>
+            <a> Reageer</a>
+            <a class="bekijkbucketlist">Bekijk bucketlist</a>
+        </div>
+      </div>
+    </div>
+
+{{/each}} --}}
+
+
+
+  {{#each people.users}}
+   
+    <div class="matchprofiel">
+        <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
+        <div class="profielcontainer">
+        <div>
+            <img src="images/profile/{{profielFotoUrl}}"> 
+          </div>
+          <div class="profielinfo">
+            <p>{{wilGraag}}
+                </p>
+            <a> Reageer</a>
+            <a class="bekijkbucketlist">Bekijk bucketlist</a>
+        </div>
+      </div>
+    </div>
+
+{{/each}}
+
+
+
+
+ 
+
+
+
+
+
+
+</section>
