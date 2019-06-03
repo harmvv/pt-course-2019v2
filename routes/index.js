@@ -50,9 +50,23 @@ router.get('/', function(req, res, next) {
 
 //test
 
-router.get('/test', function(req, res, next) {
+router.get('/unstable', function(req, res, next) {
   res.render('index', { title: 'Harms buckettest', condition : false });
 });
+
+
+// new get route
+router.get("/test/:id", function(req, res, next){
+  res.render("test", {output: req.params.id})
+
+})
+
+// new post route
+
+router.post("/test/submit", function(req, res, next){
+  var id = req.body.id;
+  res.redirect(/test/ + id);
+})
 
 /* GET users listing. */
 router.get('/users', function(req, res, next) {
