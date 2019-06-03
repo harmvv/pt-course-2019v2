@@ -30,15 +30,42 @@
 <section class="timeline">
         <h2 class="timelinetitle">Timeline</h2>
   <h2>Bekijk de status van jouw matches</h2>
+{{!-- {{# if succes}}
+<section class="succes">
+<h3> Succes Validation</h3>
+</section>
+{{else}}
+
+{{# if errors}}
+<section class="errors">
+  <ul>
+    {{# each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+</section>
+
+{{/if}}
 
 <section class="insert">
-<form action="/test/submit" method="post">
+<form action="/submit" method="post">
+<div class="input">
+<label for="email"> E-mail</label>
+  <input type="text" id="email" name="Email">
+</div>
+<div class="input">
+<label for="password"> password</label>
+  <input type="password" id="password" name="password">
 
-  <input type="text" id="title" name="id">
-<button type="submit">Insert</button>
+</div>
+<div class="input">
+<label for="confirmPassword"> Conform password</label>
+  <input type="password" id="conforimPassword" name="confirmPassword">
+<button type="sumbit">sign up</button>
+</div>
 </form>
 
-</section>
+</section> --}}
 <div class="matchul"></div>
 
 
