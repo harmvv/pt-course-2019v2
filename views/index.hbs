@@ -30,42 +30,37 @@
 <section class="timeline">
         <h2 class="timelinetitle">Timeline</h2>
   <h2>Bekijk de status van jouw matches</h2>
-{{!-- {{# if succes}}
-<section class="succes">
-<h3> Succes Validation</h3>
-</section>
-{{else}}
-
-{{# if errors}}
-<section class="errors">
-  <ul>
-    {{# each errors}}
-    <li>{{this.msg}}</li>
-    {{/each}}
-  </ul>
-</section>
-
+  {{# if success }}
+    <section class="success">
+        <h2>Successful Validation!</h2>
+    </section>
+{{ else }}
+    {{# if errors }}
+        <section class="errors">
+            <ul>
+                {{# each errors }}
+                    <li>{{ this.msg }}</li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+    <form action="/submit" method="post">
+        <div class="input">
+            <label for="email">E-Mail</label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="input">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="input">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+        </div>
+        <button type="submit">Sign up</button>
+    </form>
 {{/if}}
 
-<section class="insert">
-<form action="/submit" method="post">
-<div class="input">
-<label for="email"> E-mail</label>
-  <input type="text" id="email" name="Email">
-</div>
-<div class="input">
-<label for="password"> password</label>
-  <input type="password" id="password" name="password">
-
-</div>
-<div class="input">
-<label for="confirmPassword"> Conform password</label>
-  <input type="password" id="conforimPassword" name="confirmPassword">
-<button type="sumbit">sign up</button>
-</div>
-</form>
-
-</section> --}}
 <div class="matchul"></div>
 
 
