@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var mongo = require("mongodb");
+var assert = require("assert");
+
+var url = "mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority";
+
 var profile = {
   "you" : [
       {
@@ -40,23 +45,23 @@ var people =
 }
 /* GET home page. */
 
-// router.get('/', function(req, res, next) {
-//   res.render('index',{
-//     content : "Dit is content",
-//     people : people,
-//     profile : profile,
-//     title : "Home",
-//     title: 'Form Validation', success: req.session.success, errors: req.session.errors
-// });
-// req.session.errors = null;
-// });
+router.get('/', function(req, res, next) {
+  res.render('index',{
+    content : "Dit is content",
+    people : people,
+    profile : profile,
+    title : "Home",
+    
+});
+
+});
 
 
 //get homepage test
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', {     people : people, profile : profile, title: 'Form Validation', success: req.session.success, errors: req.session.errors });
+/* GET form page. */
+router.get('/form', function(req, res, next) {
+  res.render('form', {      title: 'Form Validation', success: req.session.success, errors: req.session.errors });
   req.session.errors = null;
 });
 
@@ -71,9 +76,50 @@ router.post('/submit', function(req, res, next) {
   } else {
     req.session.success = true;
   }
-  res.redirect('/');
+  res.redirect('/form');
 });
 
+// mongodb routes
+
+router.get("/get-date", function(req, res, next){
+  var resultArray = []
+mongo.connect(url, function(err, db){
+  assert.equal(null, err);
+  var cursor = db.collection("formdata").find();
+  cursor.forEach(function(doc, err){
+assert.equal(null, err);
+resultArray.push(doc);
+  }, function(){
+    db.close();
+    res.render("/form", {items: resultArray});
+  });
+});
+});
+
+router.post("/insert", function(req, res, next){
+var item ={
+  title: req.body.title,
+  content: req.body.content,
+  author : req.body. author
+};
+mongo.connect(url, function(err, db){
+assert.equal(null, err);
+db.collection("formdata").insertOne(item, function(err, result){
+assert.equal(null, err);
+console.log("item toegevoegd");
+db.close();
+})
+})
+res.redirect("/form");
+})
+
+router.post("/update", function(req, res, next){
+
+})
+
+router.post("/delete", function(req, res, next){
+
+})
 //test
 
 router.get('/unstable', function(req, res, next) {
