@@ -7,6 +7,7 @@ var hbs = require("express-handlebars");
 var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
+const mongoose = require("mongoose");
 
 app.use(express.static(path.join(__dirname, '/public')));
 

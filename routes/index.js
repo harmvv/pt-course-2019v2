@@ -1,28 +1,52 @@
 var express = require('express');
 var router = express.Router();
-// var mongo = require("mongodb");
-// var assert = require("assert");
-
-// var url = "mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority";
-
-const MongoClient = require('mongodb',).MongoClient
-const assert = require('assert');
-
+var mongoose = require("mongoose");
+var MongoClient = require('mongodb',).MongoClient
+var assert = require('assert');
+var User = require('../models/user')
 // Connection URL
-const url = 'mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority';
 
-// Database Name
-const dbName = 'Buckettest';
+mongoose.connect("mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true })
+var db = mongoose.connection;
+
+db.once('open', function() {
+  console.log("connected mongodb")
+});
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//
+//db check connection
+
+
+//check for db errors
+db.on("error", function(err){
+console.log(err);
+});
+
+//bring in model
+
+
+
+
+// oude mongodb connectie
+
+// const url = 'mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority';
+
+// // Database Name
+// const dbName = 'Buckettest';
 
 // Use connect method to connect to the server
-MongoClient.connect(url, { useNewUrlParser: true }, function(err, client, ) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+// MongoClient.connect(url, { useNewUrlParser: true }, function(err, client, ) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server");
 
-  const db = client.db(dbName);
+//   const db = client.db(dbName);
 
-  client.close();
-});
+//   client.close();
+// });
+
+
+//oude manier mongodb connectie
 
 
 
@@ -67,11 +91,16 @@ var people =
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  res.render('index',{
-    content : "Dit is content",
-    people : people,
-    profile : profile,
-    title : "Home",
+  User.find({}, function(err, users){
+    console.log(users)
+    res.render('index',{
+      content : "Dit is content",
+      users : users,
+      people: people,
+      profile : profile,
+      title : "Home",
+  })
+
     
 });
 
@@ -108,6 +137,28 @@ router.get('/unstable', function(req, res, next) {
   res.render('index', { title: 'Harms buckettest', condition : false });
 });
 
+
+
+//route mongo
+
+router.get('/mongo', function(req, res, next) {
+  const user = new User({
+    naam: "henk"
+  })
+
+  user.save(function(err){
+    User.find({}, function(error, user) {
+      if(error) {
+        return console.log(error)
+      }
+    
+      console.log(user)
+      res.render('index', { title: 'Harms buckettest', condition : false })
+    })
+  })
+})
+
+//route mongo
 
 // new get route
 router.get("/test/:id", function(req, res, next){

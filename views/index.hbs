@@ -59,6 +59,25 @@
 
 {{/each}}
 
+ {{#each users}}
+   
+    <div class="matchprofiel">
+        <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
+        <div class="profielcontainer">
+        <div>
+            <img src="images/profile/{{profielFotoUrl}}"> 
+          </div>
+          <div class="profielinfo">
+            <p>{{wilGraag}}
+                </p>
+            <a> Reageer</a>
+            <a class="bekijkbucketlist">Bekijk bucketlist</a>
+        </div>
+      </div>
+    </div>
+
+{{/each}}
+
 
 
 
