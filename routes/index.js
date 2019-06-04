@@ -1,9 +1,30 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require("mongodb");
-var assert = require("assert");
+// var mongo = require("mongodb");
+// var assert = require("assert");
 
-var url = "mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority";
+// var url = "mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority";
+
+const MongoClient = require('mongodb',).MongoClient
+const assert = require('assert');
+
+// Connection URL
+const url = 'mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority';
+
+// Database Name
+const dbName = 'Buckettest';
+
+// Use connect method to connect to the server
+MongoClient.connect(url, { useNewUrlParser: true }, function(err, client, ) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+
+  const db = client.db(dbName);
+
+  client.close();
+});
+
+
 
 var profile = {
   "you" : [
@@ -81,45 +102,6 @@ router.post('/submit', function(req, res, next) {
 
 // mongodb routes
 
-router.get("/get-date", function(req, res, next){
-  var resultArray = []
-mongo.connect(url, function(err, db){
-  assert.equal(null, err);
-  var cursor = db.collection("formdata").find();
-  cursor.forEach(function(doc, err){
-assert.equal(null, err);
-resultArray.push(doc);
-  }, function(){
-    db.close();
-    res.render("/form", {items: resultArray});
-  });
-});
-});
-
-router.post("/insert", function(req, res, next){
-var item ={
-  title: req.body.title,
-  content: req.body.content,
-  author : req.body. author
-};
-mongo.connect(url, function(err, db){
-assert.equal(null, err);
-db.collection("formdata").insertOne(item, function(err, result){
-assert.equal(null, err);
-console.log("item toegevoegd");
-db.close();
-})
-})
-res.redirect("/form");
-})
-
-router.post("/update", function(req, res, next){
-
-})
-
-router.post("/delete", function(req, res, next){
-
-})
 //test
 
 router.get('/unstable', function(req, res, next) {
