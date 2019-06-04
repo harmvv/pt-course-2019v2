@@ -143,7 +143,12 @@ router.get('/unstable', function(req, res, next) {
 
 router.get('/mongo', function(req, res, next) {
   const user = new User({
-    naam: "henk"
+    naam: "Marja van kesteren",
+    lidSinds: '2016',
+profielFotoUrl: "Lisa.png",
+type : "Avondturier",
+zoekType: "Relaxer",
+wilGraag : "Surfer"
   })
 
   user.save(function(err){
