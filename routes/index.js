@@ -7,7 +7,7 @@ var User = require('../models/user')
 var Profile = require("../models/profile")
 // Connection URL
 
-mongoose.connect("mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect("mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@"+process.env.DB_HOST+"Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
 var db = mongoose.connection;
 
 db.once('open', function() {
