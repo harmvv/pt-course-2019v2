@@ -51,15 +51,6 @@ console.log(err);
 
 
 
-// var oudProfile = {
-//   "you" : [
-//       {
-//   "naam" : "Herman janssen",
-// "lidSinds" : "2017" ,
-// "type" : "Ontdekker",
-// "profielFotoUrl":  "jouwprofielfoto.png",
-// "zoekType" : "ontdekker of een avondturier"
-// }]};
 
 // var people = 
 // {
@@ -96,7 +87,7 @@ console.log(err);
 router.get('/', function(req, res, next) {
   User.find({}, function(err, users){
     Profile.find({}, function(err, profiles){
-    console.log(users + profiles)
+    // console.log(users + profiles)
     res.render('index',{
       content : "Dit is content",
       users : users,
@@ -110,6 +101,54 @@ router.get('/', function(req, res, next) {
 });
 
 });
+
+
+router.route('/').post(function (req, res) {
+  console.log('hoi');
+  var type = req.body.outcomeInput;
+  console.log(type);
+  User.find({}, function(err, users){
+    Profile.find({}, function(err, profiles){
+    // console.log(users + profiles)
+    res.render('index',{
+      content : "Dit is content",
+      users : users,
+      profiles : profiles,
+      // people: people,
+      // oudProfile : oudProfile,
+      title : "Home",
+  })
+    })
+    
+});
+});
+
+
+
+
+
+//outcome buckettest route
+// router.post('/', function(req, res, next) {
+//   var type = res.body.outcomeInput;
+  
+//   User.find({}, function(err, users){
+    
+//     Profile.find({}, function(err, profiles){
+//     // console.log(users + profiles)
+    
+//     res.render('index',{
+//       content : "Dit is content",
+//       users : users,
+//       profiles : profiles,
+//       // people: people,
+//       // oudProfile : oudProfile,
+//       title : "Home",
+//   })
+//     })
+    
+// });
+
+// });
 
 //this is home route with profile working
 

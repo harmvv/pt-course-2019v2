@@ -35,8 +35,31 @@ close.addEventListener("click", openMenu);
   var template = $('#matchestemplate').html();
         
   
-  
-  
+function calculateType(event){
+  // event.preventDefault();
+// console.log("test submit")
+var option1 = document.querySelector('input[name="vacation"]').value
+var option2 = document.querySelector('input[name="preferences"]').value
+var outcomeInput = document.querySelector('input[name="outcomeInput"]')
+var outcome = Number(option1) + Number(option2)
+console.log("test submit" + option1+ " "+ option2)
+console.log(outcome);
+var type = "";
+if(outcome < 7){
+  type = "Relaxer";
+}
+else if(outcome > 7 && outcome < 11){
+type = "Ontdekker"
+}
+else {
+type = "Avonturier"
+}
+console.log(type)
+outcomeInput.value= type
+};
+
+  var bucketForm = document.querySelector(".buckettest")
+  bucketForm.addEventListener("submit", calculateType);
   
   
   

@@ -3,18 +3,18 @@
             <h1>The Bucktest</h1>
             <h2>Wat heeft jouw voorkeur?</h2>
         </div>
-        <form class="buckettest" action="index.html" method="get">
+        <form class="buckettest" action="/" method="post">
             <div class="omgeving">
 
                 <h4>Omgeving</h4>
                 <div class="formcontainer">
                     <div class="forminput">
                       <div class="input2images"> 
-                        <input type="radio" name="Vacation" value="beach" id="beach1">
+                        <input type="radio" name="vacation" value="3" id="beach1">
                         <label for="beach1"><img src="images/beachsun.png"></label>
-                        <input type="radio" name="Vacation" value="winter" id="winter2">
+                        <input type="radio" name="vacation" value="6" id="winter2">
                         <label class="labelwinter2" for="winter2"><img class="winterimg2" src="images/winter.png"></label>
-                        <input type="radio" name="Vacation" value="jungle" id="jungle3">
+                        <input type="radio" name="vacation" value="9" id="jungle3">
                         <label for="jungle3"><img src="images/jungle.png"></label>
                     </div>
                     </div>
@@ -31,7 +31,8 @@
                         <img src="images/jungle.png">
                         </div>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <input type="range" name="preferences"min="0" max="10" value="5" class="slider" id="myRange">
+                            <input type="text" name="outcomeInput" hidden>
                         </div>
                     </div>
                 </div>
@@ -41,5 +42,6 @@
   <div class="divsubmit">         
             <input id="submitbutton" type="submit" value="Verstuur">
         </div>
+        
         </form>
     </main>
