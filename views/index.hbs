@@ -7,12 +7,12 @@
         </div>
     </div>
    <div class="profielcontainer1"></div>
-  {{#each profile.you}}
+  {{#each oudProfile.you}}
         <div id="jouwprofiel">
                 <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
                 <div class="profielcontainer">
                 <div>
-                    <img src="{{profielFotoUrl}}"> 
+                    <img src="images/profile/{{profielFotoUrl}}"> 
                   </div>
                   <div class="profielinfo">
                     <p>Jij bent een <strong>{{type}}</strong></p>
@@ -24,7 +24,23 @@
             </div>
             {{/each}}
     
-
+ {{#each profile}}
+        <div id="jouwprofiel">
+                <h5><strong>{{profileName}}</strong> - Lid sinds {{memberSince}}</h5>
+                <div class="profielcontainer">
+                <div>
+                    <img src="images/profile/{{profilePictureUrl}}"> 
+                  </div>
+                  <div class="profielinfo">
+                    <p>Jij bent een <strong>{{profileType}}</strong></p>
+                    <p>Jij zoekt een {{profileSearchType}}</p>
+                    <a> Instellingen</a>
+                    <a class="bekijkbucketlist">Bekijk bucketlist</a>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+    
 
 </main>
 <section class="timeline">
@@ -40,7 +56,7 @@
 
 
 
-  {{#each people.users}}
+  {{!-- {{#each people.users}}
    
     <div class="matchprofiel">
         <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
@@ -57,18 +73,18 @@
       </div>
     </div>
 
-{{/each}}
+{{/each}} --}}
 
  {{#each users}}
    
     <div class="matchprofiel">
-        <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
+        <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}}</h5>
         <div class="profielcontainer">
         <div>
-            <img src="images/profile/{{profielFotoUrl}}"> 
+            <img src="images/profile/{{profilePicUrl}}"> 
           </div>
           <div class="profielinfo">
-            <p>{{wilGraag}}
+            <p>{{iWant}}
                 </p>
             <a> Reageer</a>
             <a class="bekijkbucketlist">Bekijk bucketlist</a>

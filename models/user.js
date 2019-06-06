@@ -2,19 +2,19 @@ var mongoose = require("mongoose");
 
 //usersschema
 var userSchema = new mongoose.Schema({
-    naam: {
+    name: {
         type: String
     },
-    lidSinds: {
+    memberSince: {
         type: String
     },
-    profielFotoUrl: {
+    profilePicUrl: {
         type: String
     },
-    zoekType: {
+    searchType: {
         type: String
     },
-    wilGraag: {
+    iWant: {
         type: String
     }
 });

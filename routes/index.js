@@ -4,9 +4,10 @@ var mongoose = require("mongoose");
 var MongoClient = require('mongodb',).MongoClient
 var assert = require('assert');
 var User = require('../models/user')
+var Profile = require("../models/profile")
 // Connection URL
 
-mongoose.connect("mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect("mongodb+srv://harm:buckettest@buckettest-pw7xg.mongodb.net/Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
 var db = mongoose.connection;
 
 db.once('open', function() {
@@ -50,45 +51,47 @@ console.log(err);
 
 
 
-var profile = {
+var oudProfile = {
   "you" : [
       {
   "naam" : "Herman janssen",
 "lidSinds" : "2017" ,
 "type" : "Ontdekker",
-"profielFotoUrl":  "images/profile/jouwprofielfoto.png",
+"profielFotoUrl":  "jouwprofielfoto.png",
 "zoekType" : "ontdekker of een avondturier"
 }]};
 
-var people = 
-{
-"users" : [
-  {
-   "naam" : "Lisa van Poten",
-"lidSinds" : "2017" ,
-"type" : "Ontdekker",
-"profielFotoUrl":  "lisa.png",
-"zoekType" : "ontdekker of een avondturier",
-"wilGraag" : "Ik wil graag de Mount Everest is een keer beklimmen"
-},
-{
-  "naam" : "Loes van Katen", 
-  "lidSinds" : "2016",
-  "profielFotoUrl": "loes.png",
-  "zoekType" : "Relaxer",
-  "wilGraag" : "Ik wil graag nog eens de Grand Canyon zien"
-},
-{
-"naam" : "Marjolein van Goten", 
-"lidSinds" : "2016",
-"profielFotoUrl": "marjolein.png",
-"zoekType" : "Relaxer",
-"wilGraag" : "Ik wil graag nog eens de Grand Canyon zien"
-}
-]
+// var people = 
+// {
+// "users" : [
+//   {
+//    "naam" : "Lisa van Poten",
+// "lidSinds" : "2017" ,
+// "type" : "Ontdekker",
+// "profielFotoUrl":  "lisa.png",
+// "zoekType" : "ontdekker of een avondturier",
+// "wilGraag" : "Ik wil graag de Mount Everest is een keer beklimmen"
+// },
+// {
+//   "naam" : "Loes van Katen", 
+//   "lidSinds" : "2016",
+//   "profielFotoUrl": "loes.png",
+//   "zoekType" : "Relaxer",
+//   "wilGraag" : "Ik wil graag nog eens de Grand Canyon zien"
+// },
+// {
+// "naam" : "Marjolein van Goten", 
+// "lidSinds" : "2016",
+// "profielFotoUrl": "marjolein.png",
+// "zoekType" : "Relaxer",
+// "wilGraag" : "Ik wil graag nog eens de Grand Canyon zien"
+// }
+// ]
 
-}
+// }
 /* GET home page. */
+
+
 
 router.get('/', function(req, res, next) {
   User.find({}, function(err, users){
@@ -96,8 +99,9 @@ router.get('/', function(req, res, next) {
     res.render('index',{
       content : "Dit is content",
       users : users,
-      people: people,
-      profile : profile,
+      // profiles : profiles,
+      // people: people,
+      oudProfile : oudProfile,
       title : "Home",
   })
 
@@ -143,12 +147,12 @@ router.get('/unstable', function(req, res, next) {
 
 router.get('/mongo', function(req, res, next) {
   const user = new User({
-    naam: "Marja van kesteren",
-    lidSinds: '2016',
-profielFotoUrl: "Lisa.png",
+    name: "Loes van Porten",
+    memberSince: '2016',
+profilePicUrl: "loes.png",
 type : "Avondturier",
-zoekType: "Relaxer",
-wilGraag : "Surfer"
+searchType: "Relaxer",
+iWant : "Ik wil nog eens op safari"
   })
 
   user.save(function(err){
@@ -158,6 +162,29 @@ wilGraag : "Surfer"
       }
     
       console.log(user)
+      res.render('index', { title: 'Harms buckettest', condition : false })
+    })
+  })
+})
+
+//test profiles
+
+router.get('/mongoprofile', function(req, res, next) {
+  const profile = new Profile({
+    profileName: "Loes van Porten",
+    profileMemberSince: '2016',
+profilePictureUrl: "loes.png",
+profileType : "Avondturier",
+profileSearchType: "Relaxer"
+  })
+
+  profile.save(function(err){
+    Profile.find({}, function(error, profile) {
+      if(error) {
+        return console.log(error)
+      }
+    
+      console.log(profile)
       res.render('index', { title: 'Harms buckettest', condition : false })
     })
   })
