@@ -38,17 +38,19 @@ close.addEventListener("click", openMenu);
 function calculateType(event){
   // event.preventDefault();
 // console.log("test submit")
-var option1 = document.querySelector('input[name="vacation"]').value
+var option1 = document.querySelector('input[name="vacation"]:checked').value
 var option2 = document.querySelector('input[name="preferences"]').value
+var option3 = document.querySelector('input[name="date"]:checked').value
 var outcomeInput = document.querySelector('input[name="outcomeInput"]')
-var outcome = Number(option1) + Number(option2)
-console.log("test submit" + option1+ " "+ option2)
+var outcome = Number(option1) + Number(option2) + Number(option3);
+console.log("werkt dit")
+console.log("test submit" + option1+ " "+ option2 + " "+ option3);
 console.log(outcome);
 var type = "";
-if(outcome < 7){
+if(outcome < 12){
   type = "Relaxer";
 }
-else if(outcome > 7 && outcome < 11){
+else if(outcome > 11 && outcome < 20){
 type = "Ontdekker"
 }
 else {
