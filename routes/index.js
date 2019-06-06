@@ -86,7 +86,7 @@ console.log(err);
 
 router.get('/', function(req, res, next) {
   User.find({}, function(err, users){
-    Profile.find({}, function(err, profiles){
+     Profile.find({}, function(err, profiles){
     // console.log(users + profiles)
     res.render('index',{
       content : "Dit is content",
@@ -107,6 +107,11 @@ router.route('/').post(function (req, res) {
   console.log('hoi');
   var type = req.body.outcomeInput;
   console.log(type);
+  //  Profile.updateOne({}, { profileType: type });
+  Profile.update({ _id:"5cf8d800db13d00c441ec343"}, { profileType: type }, function(err) {
+    if(err) { throw err; }
+    //...
+});
   User.find({}, function(err, users){
     Profile.find({}, function(err, profiles){
     // console.log(users + profiles)
