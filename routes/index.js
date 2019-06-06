@@ -51,15 +51,15 @@ console.log(err);
 
 
 
-var oudProfile = {
-  "you" : [
-      {
-  "naam" : "Herman janssen",
-"lidSinds" : "2017" ,
-"type" : "Ontdekker",
-"profielFotoUrl":  "jouwprofielfoto.png",
-"zoekType" : "ontdekker of een avondturier"
-}]};
+// var oudProfile = {
+//   "you" : [
+//       {
+//   "naam" : "Herman janssen",
+// "lidSinds" : "2017" ,
+// "type" : "Ontdekker",
+// "profielFotoUrl":  "jouwprofielfoto.png",
+// "zoekType" : "ontdekker of een avondturier"
+// }]};
 
 // var people = 
 // {
@@ -95,21 +95,38 @@ var oudProfile = {
 
 router.get('/', function(req, res, next) {
   User.find({}, function(err, users){
-    console.log(users)
+    Profile.find({}, function(err, profiles){
+    console.log(users + profiles)
     res.render('index',{
       content : "Dit is content",
       users : users,
-      // profiles : profiles,
+      profiles : profiles,
       // people: people,
-      oudProfile : oudProfile,
+      // oudProfile : oudProfile,
       title : "Home",
   })
-
+    })
     
 });
 
 });
 
+//this is home route with profile working
+
+// router.get('/', function(req, res, next) {
+//   Profile.find({}, function(err, profiles){
+//     console.log(profiles)
+//     res.render('index',{
+//       content : "Dit is content",
+//       profiles : profiles,
+//       oudProfile : oudProfile,
+//       title : "Home",
+//   })
+
+    
+// });
+
+// });
 
 //get homepage test
 
