@@ -37,7 +37,8 @@ router.get('/', function(req, res, next) {
 
 // buckettest route
 router.get('/buckettest', function(req, res, next) {
-  res.render('buckettest'); // renders the buckettest template on /buckettest
+  res.render('buckettest',{ success: req.session.success, errors: req.session.errors}); // renders the buckettest template on /buckettest
+  req.session.errors = null;
 });
 
 // Reroute to home after buckettest is completed
@@ -65,7 +66,9 @@ router.route('/').post(function (req, res) { // when / gets post method
 
 /* GET form page. */
 router.get('/form', function(req, res, next) {
-  res.render('form', {      title: 'Form Validation', success: req.session.success, errors: req.session.errors });
+  res.render('form', {      title: 'Form Validation'
+  , success: req.session.success, errors: req.session.errors
+ });
   req.session.errors = null;
 });
 
