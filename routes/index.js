@@ -74,8 +74,9 @@ router.get('/form', function(req, res, next) {
 
 router.post('/submit', function(req, res, next) {
   req.check('email', 'Invalid email address').isEmail();
+  req.check('name', 'Vul je naam in').notEmpty();
   req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
-
+  req.check('iwant', 'Vul iets in wat je nog gedaan wil hebben').notEmpty();
   var errors = req.validationErrors();
   if (errors) {
     req.session.errors = errors;
@@ -83,7 +84,32 @@ router.post('/submit', function(req, res, next) {
   } else {
     req.session.success = true;
   }
+  var email = req.body.email;
+  var name = req.body.name;
+  var password = req.body.password;
+  var iwant = req.body.iwant;
+  console.log(email + password);
   res.redirect('/form');
+  const user = new User({
+    name: name,
+    email : email,
+    memberSince: '2016',
+profilePicUrl: "loes.png",
+type : "Avondturier",
+searchType: "Relaxer",
+iWant : iwant
+  })
+
+  user.save(function(err){
+    User.find({}, function(error, user) {
+      if(error) {
+        return console.log(error)
+      }
+    
+      console.log(user)
+    
+    })
+  })
 });
 
 // mongodb routes

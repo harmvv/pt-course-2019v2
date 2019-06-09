@@ -19,6 +19,10 @@
             <label for="email">E-Mail</label>
             <input type="text" id="email" name="email">
         </div>
+              <div class="input">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
         <div class="input">
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
@@ -27,6 +31,10 @@
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword">
         </div>
+          <div class="input">
+            <label for="iwant">Wat wil je nog eens gedaan hebben in je leven</label>
+            <input type="text" id="iwant" name="iwant">
+        </div>
         <button type="submit">Sign up</button>
     </form>
 {{/if}}
@@ -34,7 +42,7 @@
 
 {{!-- mongodb form --}}
 
-<section class="insert">
+{{!-- <section class="insert">
     <h3>Insert Data</h3>
     <form action="/insert" method="post">
         <div class="input">
@@ -98,6 +106,6 @@
         </div>
         <button type="submit">DELETE</button>
     </form>
-</section>
+</section> --}}
 
 {{!-- end mongdb form --}}
