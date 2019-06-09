@@ -87,13 +87,15 @@ router.post('/submit', function(req, res, next) {
   var email = req.body.email;
   var name = req.body.name;
   var password = req.body.password;
+  var date = new Date();
+  var year = date.getFullYear();
   var iwant = req.body.iwant;
   console.log(email + password);
   res.redirect('/form');
   const user = new User({
     name: name,
     email : email,
-    memberSince: '2016',
+    memberSince: year,
 profilePicUrl: "loes.png",
 type : "Avondturier",
 searchType: "Relaxer",
