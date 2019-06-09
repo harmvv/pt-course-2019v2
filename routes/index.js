@@ -5,6 +5,7 @@ var MongoClient = require('mongodb',).MongoClient
 var assert = require('assert');
 var User = require('../models/user')
 var Profile = require("../models/profile")
+var passport = require("passport")
 // Connection URL
 
 mongoose.connect("mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@"+process.env.DB_HOST+"Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
@@ -72,6 +73,7 @@ router.get('/form', function(req, res, next) {
   req.session.errors = null;
 });
 
+// get the post form info
 router.post('/submit', function(req, res, next) {
   req.check('email', 'Invalid email address').isEmail();
   req.check('name', 'Vul je naam in').notEmpty();
@@ -113,6 +115,12 @@ iWant : iwant
     })
   })
 });
+
+//Login page
+
+
+
+
 
 // mongodb routes
 
