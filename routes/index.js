@@ -126,6 +126,14 @@ router.get('/login', function(req, res, next) {
 
 });
 
+router.post('/login', function(req, res, next) {
+  User.find({email: req.body.email, password: req.body.password}, function (err, currentuser) {
+    console.log(currentuser);
+  });
+  
+
+
+});
 
 
 // mongodb routes
