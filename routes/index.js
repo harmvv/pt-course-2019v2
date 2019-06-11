@@ -6,6 +6,9 @@ var assert = require('assert');
 var User = require('../models/user')
 var Profile = require("../models/profile")
 var passport = require("passport")
+var app = express();
+var expressValidator = require("express-validator")
+var expressSession = require("express-session");
 // Connection URL
 
 mongoose.connect("mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@"+process.env.DB_HOST+"Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
@@ -66,8 +69,8 @@ router.route('/').post(function (req, res) { // when / gets post method
 
 
 /* GET form page. */
-router.get('/form', function(req, res, next) {
-  res.render('form', {      title: 'Form Validation'
+router.get('/register', function(req, res, next) {
+  res.render('register', {      title: 'Form Validation'
   , success: req.session.success, errors: req.session.errors
  });
   req.session.errors = null;
@@ -83,38 +86,42 @@ router.post('/submit', function(req, res, next) {
   if (errors) {
     req.session.errors = errors;
     req.session.success = false;
+    res.redirect('/register');
   } else {
     req.session.success = true;
-  }
-  var email = req.body.email;
-  var name = req.body.name;
-  var password = req.body.password;
-  var date = new Date();
-  var year = date.getFullYear();
-  var iwant = req.body.iwant;
-  console.log(email + password);
-  res.redirect('/form');
-  const user = new User({
-    name: name,
-    email : email,
-    password : password,
-    memberSince: year,
-profilePicUrl: "loes.png",
-type : "Avondturier",
-searchType: "Relaxer",
-iWant : iwant
-  })
 
-  user.save(function(err){
-    User.find({}, function(error, user) {
-      if(error) {
-        return console.log(error)
-      }
     
-      console.log(user)
-    
+    var email = req.body.email;
+    var name = req.body.name;
+    var password = req.body.password;
+    var date = new Date();
+    var year = date.getFullYear();
+    var iwant = req.body.iwant;
+    console.log(email + password);
+    res.redirect('/register');
+    const user = new User({
+      name: name,
+      email : email,
+      password : password,
+      memberSince: year,
+  profilePicUrl: "loes.png",
+  type : "Avondturier",
+  searchType: "Relaxer",
+  iWant : iwant
     })
-  })
+  
+    user.save(function(err){
+      User.find({}, function(error, user) {
+        if(error) {
+          return console.log(error)
+        }
+      
+        console.log(user)
+      
+      })
+    })
+  }
+
 });
 
 //Login page
@@ -127,8 +134,17 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  User.find({email: req.body.email, password: req.body.password}, function (err, currentuser) {
+  User.findOne({email: req.body.email, password: req.body.password}, function (err, currentuser) {
+    if(err){
+      return res.status(500).send();
+    }
+    else if(!currentuser) {
+      return res.status(404).send();
+      
+    }
     console.log(currentuser);
+    req.session.currentuser = currentuser;
+    res.render('index', {      title: 'login Validation'});
   });
   
 
