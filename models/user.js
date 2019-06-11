@@ -6,7 +6,8 @@ var userSchema = new mongoose.Schema({
         type: String
     },
     email: {
-        type: String
+        type: String,
+        
     },
     name: {
         type: String

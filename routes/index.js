@@ -48,7 +48,7 @@ router.route('/').post(function (req, res) { // when / gets post method
   var type = req.body.outcomeInput; // gets input from form bucketlist
   console.log(type); // log in to the console
   //  Profile.updateOne({}, { profileType: type });
-  Profile.update({ _id:"5cf8d800db13d00c441ec343"}, { profileType: type }, function(err) { // update the type of the user
+  Profile.updateOne({ _id:"5cf8d800db13d00c441ec343"}, { profileType: type }, function(err) { // update the type of the user
     if(err) { throw err; }
     //...
 });
@@ -97,6 +97,7 @@ router.post('/submit', function(req, res, next) {
   const user = new User({
     name: name,
     email : email,
+    password : password,
     memberSince: year,
 profilePicUrl: "loes.png",
 type : "Avondturier",
@@ -118,7 +119,12 @@ iWant : iwant
 
 //Login page
 
+router.get('/login', function(req, res, next) {
+  res.render('login', {      title: 'Form Validation'
+  
+ });
 
+});
 
 
 
