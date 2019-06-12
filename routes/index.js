@@ -40,6 +40,7 @@ router.get('/', function(req, res, next) {
 
 });
 
+
 // buckettest route
 router.get('/buckettest', function(req, res, next) {
   res.render('buckettest',{ success: req.session.success, errors: req.session.errors}); // renders the buckettest template on /buckettest
@@ -52,7 +53,9 @@ router.route('/').post(function (req, res) { // when / gets post method
   var type = req.body.outcomeInput; // gets input from form bucketlist
   console.log(type); // log in to the console
   //  Profile.updateOne({}, { profileType: type });
-  Profile.updateOne({ _id:"5cf8d800db13d00c441ec343"}, { profileType: type }, function(err) { // update the type of the user
+  User.updateOne({ _id: req.session.currentuser._id, },{ type : type }, function(err) {
+    
+     // update the type of the user
     if(err) { throw err; }
     //...
 });
@@ -68,6 +71,35 @@ router.route('/').post(function (req, res) { // when / gets post method
     
 });
 });
+
+// buckettest route
+// router.get('/buckettest', function(req, res, next) {
+//   res.render('buckettest',{ success: req.session.success, errors: req.session.errors}); // renders the buckettest template on /buckettest
+//   req.session.errors = null;
+// });
+
+// // Reroute to home after buckettest is completed
+// router.route('/').post(function (req, res) { // when / gets post method
+//   console.log('new buckettest data'); 
+//   var type = req.body.outcomeInput; // gets input from form bucketlist
+//   console.log(type); // log in to the console
+//   //  Profile.updateOne({}, { profileType: type });
+//   Profile.updateOne({ _id:"5cf8d800db13d00c441ec343"}, { profileType: type }, function(err) { // update the type of the user
+//     if(err) { throw err; }
+//     //...
+// });
+//   User.find({}, function(err, users){ // finds the user data using the model 
+//     Profile.find({}, function(err, profiles){ // find the profile info using the model
+//     res.render('index',{ // render the index page
+//       users : users, // use the user info to display it on the template
+//       profiles : profiles, // use the profile info to display it on the template
+//       title : "Home",
+//       user : req.session.currentuser 
+//   })
+//     })
+    
+// });
+// });
 
 
 /* GET form page. */
