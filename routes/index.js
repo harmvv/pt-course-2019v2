@@ -26,16 +26,14 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:')); // if 
 
 // Home route
 router.get('/', function(req, res, next) {
+  
   User.find({}, function(err, users){ // Uses the User model to find data on the database
-     Profile.find({}, function(err, profiles){ // uses the Profile model to find the datt of the current user
-    res.render('index',{ // render the index template
+   res.render('index',{ // render the index template
       users : users, //  the users are also called users in the template
-      profiles : profiles, // the profile info is also called profiles in the template
       title : "Home",
        user : req.session.currentuser 
   })
-    })
-    
+
 });
 
 });
@@ -60,13 +58,12 @@ router.route('/').post(function (req, res) { // when / gets post method
     //...
 });
   User.find({}, function(err, users){ // finds the user data using the model 
-    Profile.find({}, function(err, profiles){ // find the profile info using the model
+    // find the profile info using the model
     res.render('index',{ // render the index page
       users : users, // use the user info to display it on the template
-      profiles : profiles, // use the profile info to display it on the template
       title : "Home",
       user : req.session.currentuser 
-  })
+  
     })
     
 });
@@ -136,11 +133,10 @@ router.post('/submit', function(req, res, next) {
     const user = new User({
       name: name,
       email : email,
-      type : "undefined",
+      type : "...? Doe de buckettest",
       password : password,
       memberSince: year,
-  profilePicUrl: "loes.png",
-  type : "Avondturier",
+  profilePicUrl: "jouwprofielfoto.png",
   searchType: "Relaxer",
   iWant : iwant
     })
@@ -164,6 +160,7 @@ router.post('/submit', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', {      title: 'login Validation'
   
+  
  });
 
 });
@@ -182,8 +179,17 @@ router.post('/login', function(req, res, next) {
     req.session.save(function (currentuser){
 
     } ) ;
-    res.render('index', {  title: 'login Validation'}
-    );
+    User.find({}, function(err, users){ // finds the user data using the model 
+       // find the profile info using the model
+      res.render('index',{ // render the index page
+        users : users, // use the user info to display it on the template
+        title : "Home",
+        user : req.session.currentuser 
+    })
+      
+      
+  });
+    
   });
   
 
