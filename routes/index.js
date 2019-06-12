@@ -62,6 +62,7 @@ router.route('/').post(function (req, res) { // when / gets post method
       users : users, // use the user info to display it on the template
       profiles : profiles, // use the profile info to display it on the template
       title : "Home",
+      user : req.session.currentuser 
   })
     })
     
