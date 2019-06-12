@@ -24,22 +24,22 @@
             </div>
             {{/each}} --}}
     
- {{#each profiles}}
+ {{!-- {{#each profiles}} --}}
         <div id="jouwprofiel">
-                <h5><strong>{{profileName}}</strong> - Lid sinds {{memberSince}}</h5>
+                <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
                 <div class="profielcontainer">
                 <div>
-                    <img src="images/profile/{{profilePictureUrl}}"> 
+                    <img src="images/profile/{{user.profilePicUrl}}"> 
                   </div>
                   <div class="profielinfo">
-                    <p>Jij bent een <strong>{{profileType}}</strong></p>
-                    <p>Jij zoekt een {{profileSearchType}}</p>
+                    <p>Jij bent een <strong>{{user.type}}</strong></p>
+                    <p>Jij zoekt een {{user.searchType}}</p>
                     <a> Instellingen</a>
                     <a class="bekijkbucketlist">Bekijk bucketlist</a>
                 </div>
               </div>
             </div>
-            {{/each}}
+            {{!-- {{/each}} --}}
     
 
 </main>
@@ -94,6 +94,8 @@
 
 {{/each}}
 
+
+<h1>{{user.name}}</h1>
 
 
 

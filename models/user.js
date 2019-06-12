@@ -9,6 +9,9 @@ var userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
+    type: {
+        type: String,
+    },
     name: {
         type: String
     },

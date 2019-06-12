@@ -32,6 +32,7 @@ router.get('/', function(req, res, next) {
       users : users, //  the users are also called users in the template
       profiles : profiles, // the profile info is also called profiles in the template
       title : "Home",
+       user : req.session.currentuser 
   })
     })
     
@@ -102,6 +103,7 @@ router.post('/submit', function(req, res, next) {
     const user = new User({
       name: name,
       email : email,
+      type : "undefined",
       password : password,
       memberSince: year,
   profilePicUrl: "loes.png",
@@ -127,7 +129,7 @@ router.post('/submit', function(req, res, next) {
 //Login page
 
 router.get('/login', function(req, res, next) {
-  res.render('login', {      title: 'Form Validation'
+  res.render('login', {      title: 'login Validation'
   
  });
 
@@ -144,7 +146,11 @@ router.post('/login', function(req, res, next) {
     }
     console.log(currentuser);
     req.session.currentuser = currentuser;
-    res.render('index', {      title: 'login Validation'});
+    req.session.save(function (currentuser){
+
+    } ) ;
+    res.render('index', {  title: 'login Validation'}
+    );
   });
   
 
@@ -157,7 +163,8 @@ router.post('/login', function(req, res, next) {
 //test
 
 router.get('/unstable', function(req, res, next) {
-  res.render('index', { title: 'Harms buckettest', condition : false });
+  console.log(req.session.currentuser, currentuser)
+  res.render('index', { title: 'Harms buckettest', condition : false});
 });
 
 
