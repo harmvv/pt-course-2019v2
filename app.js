@@ -8,7 +8,8 @@ var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
 var mongoose = require("mongoose");
-require('dotenv').config()
+var multer = require("multer");
+require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -62,8 +63,7 @@ db.once('open', function () {
 }); // check if we are connected to mongodb
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:')); // if we arent connected we get an error
-//
-//db check connection
+
 
 
 // catch 404 and forward to error handler

@@ -26,6 +26,9 @@ var userSchema = new mongoose.Schema({
     },
     iWant: {
         type: String
+    },
+    photo: {
+        type: String
     }
 });
 

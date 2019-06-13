@@ -9,6 +9,7 @@ var passport = require("passport")
 var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
+var multer = require("multer");
 // Connection URL
 
 
@@ -21,6 +22,8 @@ router.get('/register', function (req, res, next) {
   });
   req.session.errors = null;
 });
+
+
 
 // get the post form info
 router.post('/submit', function (req, res, next) {
@@ -64,7 +67,7 @@ router.post('/submit', function (req, res, next) {
           return console.log(error)
         }
 
-        console.log(user)
+        // console.log(user)
 
       })
     })

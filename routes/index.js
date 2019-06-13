@@ -9,6 +9,7 @@ var passport = require("passport")
 var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
+var multer = require("multer");
 // Connection URL
 
 // Home route
@@ -30,5 +31,54 @@ router.get('/', function (req, res, next) {
     res.redirect('/login')
   }
 });
+
+//setup multer
+// const multerConf = {
+//   storage : multer.diskStorage({
+//     destination : function(req, file, next){
+//   next(null, "./public/images/profile");
+//     }, filename: function(req, file, next){
+//     console.log(file);
+//     }
+//   }),
+  
+//   };
+
+// router.post("/upload",multer(multerConf).single("photo"), function(req, res){
+//   res.send("this is post route upload");
+// })
+
+//server.js
+ 
+ 
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/profile')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+    });
+  }
+});
+var upload = multer({ storage: storage })
+
+router.post('/uploadfile', upload.single('photo'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file)
+  
+})
+
+
+
+
+
+
 
 module.exports = router;
