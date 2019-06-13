@@ -59,13 +59,13 @@ router.route('/').post(function (req, res) { // when / gets post method
 });
   User.find({}, function(err, users){ // finds the user data using the model 
     // find the profile info using the model
+    User.find({}, function(err, you){
     res.render('index',{ // render the index page
       users : users, // use the user info to display it on the template
       title : "Home",
       user : req.session.currentuser 
-  
-    })
-    
+  })
+  });
 });
 });
 
