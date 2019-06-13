@@ -4,27 +4,10 @@
             <h1>Jouw Profiel</h1>
             <div>
                 <button>Zoek matches</button>
-        </div>
+                 </div>
     </div>
    <div class="profielcontainer1"></div>
-  {{!-- {{#each oudProfile.you}}
-        <div id="jouwprofiel">
-                <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
-                <div class="profielcontainer">
-                <div>
-                    <img src="images/profile/{{profielFotoUrl}}"> 
-                  </div>
-                  <div class="profielinfo">
-                    <p>Jij bent een <strong>{{type}}</strong></p>
-                    <p>Jij zoekt een {{zoekType}}</p>
-                    <a> Instellingen</a>
-                    <a class="bekijkbucketlist">Bekijk bucketlist</a>
-                </div>
-              </div>
-            </div>
-            {{/each}} --}}
-    
- {{!-- {{#each profiles}} --}}
+
         <div id="jouwprofiel">
                 <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
                 <div class="profielcontainer">
@@ -39,45 +22,15 @@
                 </div>
               </div>
             </div>
-            {{!-- {{/each}} --}}
-    
-
-</main>
+            </main>
 <section class="timeline">
         <h2 class="timelinetitle">Timeline</h2>
   <h2>Bekijk de status van jouw matches</h2>
 
   
 <div class="matchul"></div>
-
-
-  
-
-
-
-
-  {{!-- {{#each people.users}}
-   
-    <div class="matchprofiel">
-        <h5><strong>{{naam}}</strong> - Lid sinds {{lidSinds}}</h5>
-        <div class="profielcontainer">
-        <div>
-            <img src="images/profile/{{profielFotoUrl}}"> 
-          </div>
-          <div class="profielinfo">
-            <p>{{wilGraag}}
-                </p>
-            <a> Reageer</a>
-            <a class="bekijkbucketlist">Bekijk bucketlist</a>
-        </div>
-      </div>
-    </div>
-
-{{/each}} --}}
-
- {{#each users}}
-   
-    <div class="matchprofiel">
+{{#each users}}
+   <div class="matchprofiel">
         <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}}</h5>
         <div class="profielcontainer">
         <div>
@@ -91,19 +44,5 @@
         </div>
       </div>
     </div>
-
 {{/each}}
-
-
-<h1>{{user.name}}</h1>
-
-
-
- 
-
-
-
-
-
-
 </section>

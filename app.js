@@ -7,13 +7,15 @@ var hbs = require("express-handlebars");
 var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 require('dotenv').config()
 
 app.use(express.static(path.join(__dirname, '/public')));
 
 var indexRouter = require('./routes/index');
-
+var bucketlistRouter = require('./routes/bucketlist');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -31,6 +33,24 @@ app.use(expressValidator());
 app.use(expressSession({secret: "harm", saveUninitialized: false, resave: false}))
 
 app.use('/', indexRouter);
+app.use('/', bucketlistRouter);
+app.use('/', registerRouter);
+app.use('/', loginRouter);
+
+
+// mongoose connection
+mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_HOST + "Buckettest?retryWrites=true&w=majority", {
+  useNewUrlParser: true
+})
+var db = mongoose.connection; // here i make a connection with mongodb my host, username and pw are in the .env file
+
+db.once('open', function () {
+  console.log("connected mongodb")
+}); // check if we are connected to mongodb
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); // if we arent connected we get an error
+//
+//db check connection
 
 
 // catch 404 and forward to error handler
