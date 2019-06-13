@@ -38,16 +38,7 @@ router.post('/login', function (req, res, next) {
     req.session.save(function (currentuser) {
 
     });
-    User.find({}, function (err, users) { // finds the user data using the model 
-      // find the profile info using the model
-      res.render('index', { // render the index page
-        users: users, // use the user info to display it on the template
-        title: "Home",
-        user: req.session.currentuser
-      })
-
-
-    });
+    res.redirect('/')
 
   });
 

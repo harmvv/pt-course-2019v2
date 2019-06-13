@@ -13,9 +13,11 @@ require('dotenv').config()
 app.use(express.static(path.join(__dirname, '/public')));
 
 var indexRouter = require('./routes/index');
-var bucketlistRouter = require('./routes/bucketlist');
+var buckettestRouter = require('./routes/buckettest');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
+var menuRouter = require('./routes/menu');
 
 var app = express();
 
@@ -43,10 +45,11 @@ app.use(expressSession({
 }))
 
 app.use('/', indexRouter);
-app.use('/', bucketlistRouter);
+app.use('/', buckettestRouter);
 app.use('/', registerRouter);
 app.use('/', loginRouter);
-
+app.use('/', logoutRouter);
+app.use('/', menuRouter);
 
 // mongoose connection
 mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_HOST + "Buckettest?retryWrites=true&w=majority", {

@@ -20,7 +20,10 @@ nav li a {
 }
 
 
-
+.hamburgernavwithoutjava{
+    display: block;
+    margin-top:-20px;
+}
 
 button.close {
     font-size: 2em;

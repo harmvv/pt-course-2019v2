@@ -13,7 +13,11 @@
     <header>
         <nav>
             <ul class="ulnav">
-                <li ><img class="hamburgericon" src="/images/menu.png"></a></li>
+                <li class="javahamburgermenu"><img class="hamburgericon" src="/images/menu.png"></li>
+                <noscript><li ><a href="/menu"><img class="hamburgericon" src="/images/menu.png"></a></li>
+                <style type="text/css">
+		.javahamburgermenu { display:none; }
+	</style></noscript>
                 <li class="profilenav"><a href="/"><img src="/images/profile.png"></a></li>
                 <li><a ><img src="/images/chats.png"></a></li>
 
@@ -28,6 +32,7 @@
                     <li><a href="buckettest">Buckettest</a></li>
                     <li><a>Bucketlist</a></li>
                     <li><a>Instellingen</a></li>    
+                    <li><a href="logout">Log-out</a></li>
             
 
             </ul>

@@ -29,7 +29,7 @@ else {
 });
 
 // Reroute to home after buckettest is completed
-router.route('/').post(function (req, res) { // when / gets post method
+router.post('/buckettest', function (req, res) { // when / gets post method
   console.log('new buckettest data');
   var type = req.body.outcomeInput; // gets input from form bucketlist
   console.log(type); // log in to the console
@@ -47,19 +47,7 @@ router.route('/').post(function (req, res) { // when / gets post method
     //...
   });
 
-  User.find({}, function (err, users) { // finds the user data using the model 
-    // find the profile info using the model
-    User.findOne({
-      _id: req.session.currentuser._id
-    }, function (err, user) {
-      res.render('index', { // render the index page
-        users: users, // use the user info to display it on the template
-        title: "Home",
-        user: user,
-
-      });
-    });
-  });
+  res.redirect('/')
 });
 
 
