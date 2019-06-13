@@ -13,21 +13,22 @@ var expressSession = require("express-session");
 
 // Home route
 router.get('/', function (req, res, next) {
-  if(req.session.currentuser){
-    console.log("werkt nu" + " " +req.session.currentuser)
+  if (req.session.currentuser) {
+    console.log("werkt nu" + " " + req.session.currentuser)
     User.find({}, function (err, users) { // Uses the User model to find data on the database
-      User.findOne({_id: req.session.currentuser._id}, function (err, user) {
-      res.render('index', { // render the index template
-        users: users, //  the users are also called users in the template
-        title: "Home",
-        user: user
+      User.findOne({
+        _id: req.session.currentuser._id
+      }, function (err, user) {
+        res.render('index', { // render the index template
+          users: users, //  the users are also called users in the template
+          title: "Home",
+          user: user
+        })
       })
-    })
-  });
-}
-else {
-  res.redirect('/login')
-}
+    });
+  } else {
+    res.redirect('/login')
+  }
 });
 
 module.exports = router;

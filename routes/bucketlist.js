@@ -44,13 +44,15 @@ router.route('/').post(function (req, res) { // when / gets post method
 
   User.find({}, function (err, users) { // finds the user data using the model 
     // find the profile info using the model
-    User.findOne({_id: req.session.currentuser._id}, function (err, user) { 
-    res.render('index', { // render the index page
-      users: users, // use the user info to display it on the template
-      title: "Home",
-      user: user,
+    User.findOne({
+      _id: req.session.currentuser._id
+    }, function (err, user) {
+      res.render('index', { // render the index page
+        users: users, // use the user info to display it on the template
+        title: "Home",
+        user: user,
 
-    });
+      });
     });
   });
 });
@@ -58,4 +60,3 @@ router.route('/').post(function (req, res) { // when / gets post method
 
 
 module.exports = router;
-

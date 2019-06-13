@@ -1,49 +1,48 @@
-
-    <main class="home">
-        <div class="title" id="titlematches">
-            <h1>Jouw Profiel</h1>
-            <div>
-                <button>Zoek matches</button>
-                 </div>
+<main class="home">
+  <div class="title" id="titlematches">
+    <h1>Jouw Profiel</h1>
+    <div>
+      <button>Zoek matches</button>
     </div>
-   <div class="profielcontainer1"></div>
+  </div>
+  <div class="profielcontainer1"></div>
 
-        <div id="jouwprofiel">
-                <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
-                <div class="profielcontainer">
-                <div>
-                    <img src="images/profile/{{user.profilePicUrl}}"> 
-                  </div>
-                  <div class="profielinfo">
-                    <p>Jij bent een <strong>{{user.type}}</strong></p>
-                    <p>Jij zoekt een {{user.searchType}}</p>
-                    <a> Instellingen</a>
-                    <a class="bekijkbucketlist">Bekijk bucketlist</a>
-                </div>
-              </div>
-            </div>
-            
-<section class="timeline">
-        <h2 class="timelinetitle">Timeline</h2>
-  <h2>Bekijk de status van jouw matches</h2>
+  <div id="jouwprofiel">
+    <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
+    <div class="profielcontainer">
+      <div>
+        <img src="images/profile/{{user.profilePicUrl}}">
+      </div>
+      <div class="profielinfo">
+        <p>Jij bent een <strong>{{user.type}}</strong></p>
+        <p>Jij zoekt een {{user.searchType}}</p>
+        <a> Instellingen</a>
+        <a class="bekijkbucketlist">Bekijk bucketlist</a>
+      </div>
+    </div>
+  </div>
 
-  
-<div class="matchul"></div>
-{{#each users}}
-   <div class="matchprofiel">
-        <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}}</h5>
-        <div class="profielcontainer">
+  <section class="timeline">
+    <h2 class="timelinetitle">Timeline</h2>
+    <h2>Bekijk de status van jouw matches</h2>
+
+
+    <div class="matchul"></div>
+    {{#each users}}
+    <div class="matchprofiel">
+      <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}}</h5>
+      <div class="profielcontainer">
         <div>
-            <img src="images/profile/{{profilePicUrl}}"> 
-          </div>
-          <div class="profielinfo">
-            <p>{{iWant}}
-                </p>
-            <a> Reageer</a>
-            <a class="bekijkbucketlist">Bekijk bucketlist</a>
+          <img src="images/profile/{{profilePicUrl}}">
+        </div>
+        <div class="profielinfo">
+          <p>{{iWant}}
+          </p>
+          <a> Reageer</a>
+          <a class="bekijkbucketlist">Bekijk bucketlist</a>
         </div>
       </div>
     </div>
-{{/each}}
-</section>
+    {{/each}}
+  </section>
 </main>
