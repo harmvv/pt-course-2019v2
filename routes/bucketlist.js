@@ -16,11 +16,16 @@ var expressSession = require("express-session");
 
 // buckettest route
 router.get('/buckettest', function (req, res, next) {
+  if(req.session.currentuser){
   res.render('buckettest', {
     success: req.session.success,
     errors: req.session.errors
   }); // renders the buckettest template on /buckettest
   req.session.errors = null;
+}
+else {
+  res.redirect('/login')
+}
 });
 
 // Reroute to home after buckettest is completed
