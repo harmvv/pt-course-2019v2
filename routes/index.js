@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require("mongoose");
-var MongoClient = require('mongodb',).MongoClient
+var MongoClient = require('mongodb', ).MongoClient
 var assert = require('assert');
 var User = require('../models/user')
 var Profile = require("../models/profile")
@@ -11,10 +11,12 @@ var expressValidator = require("express-validator")
 var expressSession = require("express-session");
 // Connection URL
 
-mongoose.connect("mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@"+process.env.DB_HOST+"Buckettest?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_HOST + "Buckettest?retryWrites=true&w=majority", {
+  useNewUrlParser: true
+})
 var db = mongoose.connection; // here i make a connection with mongodb my host, username and pw are in the .env file
 
-db.once('open', function() {
+db.once('open', function () {
   console.log("connected mongodb")
 }); // check if we are connected to mongodb
 
@@ -25,48 +27,63 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:')); // if 
 
 
 // Home route
-router.get('/', function(req, res, next) {
-  
-  User.find({}, function(err, users){ // Uses the User model to find data on the database
-   res.render('index',{ // render the index template
-      users : users, //  the users are also called users in the template
-      title : "Home",
-       user : req.session.currentuser 
+router.get('/', function (req, res, next) {
+if(req.session.currentuser){
+  User.find({}, function (err, users) { // Uses the User model to find data on the database
+    User.find({_id: req.session.currentuser._id}, function (err, user) {
+    res.render('index', { // render the index template
+      users: users, //  the users are also called users in the template
+      title: "Home",
+      user: user
+    })
   })
-
 });
-
+}
+else {
+  res.redirect('/login')
+}
 });
 
 
 // buckettest route
-router.get('/buckettest', function(req, res, next) {
-  res.render('buckettest',{ success: req.session.success, errors: req.session.errors}); // renders the buckettest template on /buckettest
+router.get('/buckettest', function (req, res, next) {
+  res.render('buckettest', {
+    success: req.session.success,
+    errors: req.session.errors
+  }); // renders the buckettest template on /buckettest
   req.session.errors = null;
 });
 
 // Reroute to home after buckettest is completed
 router.route('/').post(function (req, res) { // when / gets post method
-  console.log('new buckettest data'); 
+  console.log('new buckettest data');
   var type = req.body.outcomeInput; // gets input from form bucketlist
   console.log(type); // log in to the console
   //  Profile.updateOne({}, { profileType: type });
-  User.updateOne({ _id: req.session.currentuser._id, },{ type : type }, function(err) {
-    
-     // update the type of the user
-    if(err) { throw err; }
+  User.updateOne({
+    _id: req.session.currentuser._id,
+  }, {
+    type: type
+  }, function (err) {
+
+    // update the type of the user
+    if (err) {
+      throw err;
+    }
     //...
-});
-  User.find({}, function(err, users){ // finds the user data using the model 
-    // find the profile info using the model
-    User.find({}, function(err, you){
-    res.render('index',{ // render the index page
-      users : users, // use the user info to display it on the template
-      title : "Home",
-      user : req.session.currentuser 
-  })
   });
-});
+
+  User.find({}, function (err, users) { // finds the user data using the model 
+    // find the profile info using the model
+    User.findOne({_id: req.session.currentuser._id}, function (err, user) { 
+    res.render('index', { // render the index page
+      users: users, // use the user info to display it on the template
+      title: "Home",
+      user: user,
+
+    });
+    });
+  });
 });
 
 // buckettest route
@@ -94,24 +111,28 @@ router.route('/').post(function (req, res) { // when / gets post method
 //       user : req.session.currentuser 
 //   })
 //     })
-    
+
 // });
 // });
 
 
 /* GET form page. */
-router.get('/register', function(req, res, next) {
-  res.render('register', {      title: 'Form Validation'
-  , success: req.session.success, errors: req.session.errors
- });
+router.get('/register', function (req, res, next) {
+  res.render('register', {
+    title: 'Form Validation',
+    success: req.session.success,
+    errors: req.session.errors
+  });
   req.session.errors = null;
 });
 
 // get the post form info
-router.post('/submit', function(req, res, next) {
+router.post('/submit', function (req, res, next) {
   req.check('email', 'Invalid email address').isEmail();
   req.check('name', 'Vul je naam in').notEmpty();
-  req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
+  req.check('password', 'Password is invalid').isLength({
+    min: 4
+  }).equals(req.body.confirmPassword);
   req.check('iwant', 'Vul iets in wat je nog gedaan wil hebben').notEmpty();
   var errors = req.validationErrors();
   if (errors) {
@@ -121,7 +142,7 @@ router.post('/submit', function(req, res, next) {
   } else {
     req.session.success = true;
 
-    
+
     var email = req.body.email;
     var name = req.body.name;
     var password = req.body.password;
@@ -132,23 +153,23 @@ router.post('/submit', function(req, res, next) {
     res.redirect('/register');
     const user = new User({
       name: name,
-      email : email,
-      type : "...? Doe de buckettest",
-      password : password,
+      email: email,
+      type: "...? Doe de buckettest",
+      password: password,
       memberSince: year,
-  profilePicUrl: "jouwprofielfoto.png",
-  searchType: "Relaxer",
-  iWant : iwant
+      profilePicUrl: "jouwprofielfoto.png",
+      searchType: "Relaxer",
+      iWant: iwant
     })
-  
-    user.save(function(err){
-      User.find({}, function(error, user) {
-        if(error) {
+
+    user.save(function (err) {
+      User.find({}, function (error, user) {
+        if (error) {
           return console.log(error)
         }
-      
+
         console.log(user)
-      
+
       })
     })
   }
@@ -157,41 +178,44 @@ router.post('/submit', function(req, res, next) {
 
 //Login page
 
-router.get('/login', function(req, res, next) {
-  res.render('login', {      title: 'login Validation'
-  
-  
- });
+router.get('/login', function (req, res, next) {
+  res.render('login', {
+    title: 'login Validation'
+
+
+  });
 
 });
 
-router.post('/login', function(req, res, next) {
-  User.findOne({email: req.body.email, password: req.body.password}, function (err, currentuser) {
-    if(err){
+router.post('/login', function (req, res, next) {
+  User.findOne({
+    email: req.body.email,
+    password: req.body.password
+  }, function (err, currentuser) {
+    if (err) {
       return res.status(500).send();
-    }
-    else if(!currentuser) {
+    } else if (!currentuser) {
       return res.status(404).send();
-      
+
     }
     console.log(currentuser);
     req.session.currentuser = currentuser;
-    req.session.save(function (currentuser){
+    req.session.save(function (currentuser) {
 
-    } ) ;
-    User.find({}, function(err, users){ // finds the user data using the model 
-       // find the profile info using the model
-      res.render('index',{ // render the index page
-        users : users, // use the user info to display it on the template
-        title : "Home",
-        user : req.session.currentuser 
-    })
-      
-      
+    });
+    User.find({}, function (err, users) { // finds the user data using the model 
+      // find the profile info using the model
+      res.render('index', { // render the index page
+        users: users, // use the user info to display it on the template
+        title: "Home",
+        user: req.session.currentuser
+      })
+
+
+    });
+
   });
-    
-  });
-  
+
 
 
 });
@@ -201,56 +225,65 @@ router.post('/login', function(req, res, next) {
 
 //test
 
-router.get('/unstable', function(req, res, next) {
+router.get('/unstable', function (req, res, next) {
   console.log(req.session.currentuser, currentuser)
-  res.render('index', { title: 'Harms buckettest', condition : false});
+  res.render('index', {
+    title: 'Harms buckettest',
+    condition: false
+  });
 });
 
 
 
 //route mongo
 
-router.get('/mongo', function(req, res, next) {
+router.get('/mongo', function (req, res, next) {
   const user = new User({
     name: "Loes van Porten",
     memberSince: '2016',
-profilePicUrl: "loes.png",
-type : "Avondturier",
-searchType: "Relaxer",
-iWant : "Ik wil nog eens op safari"
+    profilePicUrl: "loes.png",
+    type: "Avondturier",
+    searchType: "Relaxer",
+    iWant: "Ik wil nog eens op safari"
   })
 
-  user.save(function(err){
-    User.find({}, function(error, user) {
-      if(error) {
+  user.save(function (err) {
+    User.find({}, function (error, user) {
+      if (error) {
         return console.log(error)
       }
-    
+
       console.log(user)
-      res.render('index', { title: 'Harms buckettest', condition : false })
+      res.render('index', {
+        title: 'Harms buckettest',
+        condition: false
+      })
     })
   })
 })
 
 //test profiles
 
-router.get('/mongoprofile', function(req, res, next) {
+router.get('/mongoprofile', function (req, res, next) {
   const profile = new Profile({
     profileName: "Loes van Porten",
     profileMemberSince: '2016',
-profilePictureUrl: "loes.png",
-profileType : "Avondturier",
-profileSearchType: "Relaxer"
+    profilePictureUrl: "loes.png",
+    profileType: "Avondturier",
+    profileSearchType: "Relaxer"
   })
 
-  profile.save(function(err){
-    Profile.find({}, function(error, profile) {
-      if(error) {
+  profile.save(function (err) {
+    Profile.find({}, function (error, profile) {
+      if (error) {
         return console.log(error)
       }
-    
+
       console.log(profile)
-      res.render('index', { title: 'Harms buckettest', condition : false })
+      res.render('index', {
+        title: 'Harms buckettest',
+        condition: false
+      })
     })
   })
 })
@@ -258,26 +291,28 @@ profileSearchType: "Relaxer"
 //route mongo
 
 // new get route
-router.get("/test/:id", function(req, res, next){
-  res.render("test", {output: req.params.id})
+router.get("/test/:id", function (req, res, next) {
+  res.render("test", {
+    output: req.params.id
+  })
 
 })
 
 // new post route
 
-router.post("/test/submit", function(req, res, next){
+router.post("/test/submit", function (req, res, next) {
   var id = req.body.id;
   res.redirect(/test/ + id);
 })
 
 /* GET users listing. */
-router.get('/users', function(req, res, next) {
+router.get('/users', function (req, res, next) {
   res.send('respond with a resource');
 });
 
 
 /* GET users details. */
-router.get('/users/detail', function(req, res, next) {
+router.get('/users/detail', function (req, res, next) {
   res.send('detail');
 });
 
@@ -349,12 +384,12 @@ module.exports = router;
 //outcome buckettest route
 // router.post('/', function(req, res, next) {
 //   var type = res.body.outcomeInput;
-  
+
 //   User.find({}, function(err, users){
-    
+
 //     Profile.find({}, function(err, profiles){
 //     // console.log(users + profiles)
-    
+
 //     res.render('index',{
 //       content : "Dit is content",
 //       users : users,
@@ -364,7 +399,7 @@ module.exports = router;
 //       title : "Home",
 //   })
 //     })
-    
+
 // });
 
 // });
@@ -381,7 +416,7 @@ module.exports = router;
 //       title : "Home",
 //   })
 
-    
+
 // });
 
 // });
