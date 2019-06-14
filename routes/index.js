@@ -10,6 +10,8 @@ var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
 var multer = require("multer");
+const { static } = require('express');
+app.use('/images/', static('./public/images/profile'));
 // Connection URL
 
 // Home route
@@ -57,14 +59,13 @@ var storage = multer.diskStorage({
     cb(null, './public/images/profile')
   },
   filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw) {
-      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-    });
+    cb(null, file.fieldname + '-' + Date.now ())
   }
-});
+})
 var upload = multer({ storage: storage })
 
-router.post('/uploadfile', upload.single('photo'), (req, res, next) => {
+router.post('/', upload.single('photo'), (req, res, next) => {
+ 
   const file = req.file
   if (!file) {
     const error = new Error('Please upload a file')
@@ -72,7 +73,25 @@ router.post('/uploadfile', upload.single('photo'), (req, res, next) => {
     return next(error)
   }
     res.send(file)
+    console.log("image file upload jatoch")
+    var profilePicUrl = file.filename;
+    console.log(file)
+    User.updateOne({
+    _id: req.session.currentuser._id,
+  }, {
+    profilePicUrl : profilePicUrl
+  }, function (err) {
   
+    // update the type of the user
+    if (err) {
+      console.log("dikke vette error")
+      throw err;
+    }
+    //...
+  
+  
+  // res.redirect('/')
+  });
 })
 
 

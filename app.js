@@ -10,6 +10,7 @@ var expressSession = require("express-session");
 var mongoose = require("mongoose");
 var multer = require("multer");
 require('dotenv').config();
+var mime = require('mime');
 
 app.use(express.static(path.join(__dirname, '/public')));
 

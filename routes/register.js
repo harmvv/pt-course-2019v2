@@ -56,7 +56,7 @@ router.post('/submit', function (req, res, next) {
       type: "...? Doe de buckettest",
       password: password,
       memberSince: year,
-      profilePicUrl: "jouwprofielfoto.png",
+      profilePicUrl: "newprofile.png",
       searchType: "Relaxer",
       iWant: iwant
     })

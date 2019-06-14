@@ -27,9 +27,7 @@ var userSchema = new mongoose.Schema({
     iWant: {
         type: String
     },
-    photo: {
-        type: String
-    }
+  
 });
 
 module.exports = mongoose.model("users", userSchema);

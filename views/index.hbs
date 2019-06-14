@@ -11,7 +11,7 @@
     <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
     <div class="profielcontainer">
       <div>
-        <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+        <form  enctype="multipart/form-data" method="POST">
         <label for="photo"><img src="images/profile/{{user.profilePicUrl}}"></label>
         <input type="file" name="photo" id="photo" hidden><br>
         <input type="submit" value="upload">
@@ -29,8 +29,6 @@
   <section class="timeline">
     <h2 class="timelinetitle">Timeline</h2>
     <h2>Bekijk de status van jouw matches</h2>
-<img src="/public/images/profile/photo-1560451049636">
-
     <div class="matchul"></div>
     {{#each users}}
     <div class="matchprofiel">
