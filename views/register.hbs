@@ -2,7 +2,7 @@
   
   {{# if success }}
     <section class="success">
-        <h2>Successful Validation!</h2>
+        <h2>Registreren gelukt!</h2>
         <a href="/login">Ga hier naar het Log-in</a>
     </section>
 {{ else }}
@@ -15,26 +15,26 @@
             </ul>
         </section>
     {{/if}}
-    <form action="/submit" method="post">
+    <form class="registreren" action="/submit" method="post">
         <div class="input">
-            <label for="email">E-Mail</label>
-            <input type="text" id="email" name="email">
+            <label for="email">E-Mail</label><br>
+            <input class="formcenter" type="text" id="email" name="email">
         </div>
               <div class="input">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
+            <label for="name">Name</label><br>
+            <input  class="formcenter" type="text" id="name" name="name">
         </div>
         <div class="input">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <label for="password">Password</label><br>
+            <input class="formcenter"  type="password" id="password" name="password">
         </div>
         <div class="input">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword">
+            <label for="confirmPassword">Confirm Password</label><br>
+            <input class="formcenter"  type="password" id="confirmPassword" name="confirmPassword">
         </div>
           <div class="input">
-            <label for="iwant">Wat wil je nog eens gedaan hebben in je leven</label>
-            <input type="text" id="iwant" name="iwant">
+            <label for="iwant">Wat wil je nog eens gedaan hebben in je leven</label><br>
+            <input class="formcenter"  type="text" id="iwant" name="iwant">
         </div>
         <button type="submit">Sign up</button>
     </form>

@@ -366,6 +366,35 @@ h2.timelinetitle {
     border-radius:10px
 }
 
-form input[id="email"] {
-    text-transform: lowercase;
+.registreren {
+    background-color:#43A4CF;
+    display: block;
+    margin:10px;
+    padding:10px;
+}
+
+
+.registreren label{ 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+display: block;
+margin-top:5px;}
+
+.input{display: block;}
+
+.formcenter {
+    margin-left:30%;
+    width:40%;
+    margin-top:5px;
+}
+
+.registreren button{
+    width:20%;
+    margin-left:40%;
+    background-color: #9ABE22;
+    color:white;
+    padding:10px;
+    border-radius: 10px;
+    margin-top:10px;
 }
