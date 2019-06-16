@@ -33,24 +33,6 @@ router.get('/', function (req, res, next) {
     res.redirect('/login')
   }
 });
-
-//setup multer
-// const multerConf = {
-//   storage : multer.diskStorage({
-//     destination : function(req, file, next){
-//   next(null, "./public/images/profile");
-//     }, filename: function(req, file, next){
-//     console.log(file);
-//     }
-//   }),
-  
-//   };
-
-// router.post("/upload",multer(multerConf).single("photo"), function(req, res){
-//   res.send("this is post route upload");
-// })
-
-//server.js
  
  
 // SET STORAGE
@@ -72,7 +54,7 @@ router.post('/', upload.single('photo'), (req, res, next) => {
     error.httpStatusCode = 400
     return next(error)
   }
-    res.send(file)
+    // res.send(file)
     console.log("image file upload jatoch")
     var profilePicUrl = file.filename;
     console.log(file)
@@ -90,8 +72,9 @@ router.post('/', upload.single('photo'), (req, res, next) => {
     //...
   
   
-  // res.redirect('/')
+  res.redirect('/')
   });
+  
 })
 
 

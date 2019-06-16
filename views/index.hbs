@@ -11,7 +11,7 @@
     <h5><strong>{{user.name}}</strong> - Lid sinds {{user.memberSince}}</h5>
     <div class="profielcontainer">
       <div>
-        <form  enctype="multipart/form-data" method="POST">
+        <form  enctype="multipart/form-data" method="POST" >
         <label for="photo"><img src="images/profile/{{user.profilePicUrl}}"></label>
         <input type="file" name="photo" id="photo" hidden><br>
         <input type="submit" value="upload">
@@ -32,7 +32,7 @@
     <div class="matchul"></div>
     {{#each users}}
     <div class="matchprofiel">
-      <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}}</h5>
+      <h5><strong>{{name}}</strong> - Lid sinds {{memberSince}} - {{type}} </h5>
       <div class="profielcontainer">
         <div>
           <img src="images/profile/{{profilePicUrl}}">
