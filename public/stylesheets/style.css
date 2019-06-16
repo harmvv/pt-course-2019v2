@@ -103,12 +103,11 @@ ul.ulnav {
 }
 
 .title {
-    margin-left: 10px;
     margin-top: -50px;
 }
 
 #titlematches {
-    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     justify-content: space-between
 }
@@ -313,11 +312,11 @@ h2.timelinetitle {
 
 }
 
-.title h1 {
+h1 {
     color: #9ABE22;
     font-size: 2em;
     margin-bottom: 0px;
-
+margin-left:10px;
 }
 
 #jouwprofiel {
@@ -366,20 +365,23 @@ h2.timelinetitle {
     border-radius:10px
 }
 
-.registreren {
+.registreren, .login {
     background-color:#43A4CF;
     display: block;
     margin:10px;
     padding:10px;
+    border-radius:10px;
 }
 
 
-.registreren label{ 
+.registreren label, .login label{ 
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 display: block;
-margin-top:5px;}
+margin-top:5px;
+color:white;
+font-size:20px;}
 
 .input{display: block;}
 
@@ -389,7 +391,7 @@ margin-top:5px;}
     margin-top:5px;
 }
 
-.registreren button{
+.registreren button, .login button{
     width:20%;
     margin-left:40%;
     background-color: #9ABE22;
@@ -397,4 +399,24 @@ margin-top:5px;}
     padding:10px;
     border-radius: 10px;
     margin-top:10px;
+}
+
+
+
+.newregister button{
+    width:40%;
+    margin-left:30%;
+    background-color:#F9AE1F;
+    color:white;
+    font-size:15px;
+}
+
+.login img{
+width:20%;
+margin-left:40%;
+}
+
+.registreren img {
+    width:20%;
+    margin-left:40%;  
 }
