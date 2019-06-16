@@ -12,7 +12,7 @@
     <div class="profielcontainer">
       <div>
         <form  enctype="multipart/form-data" method="POST" >
-        <label for="photo"><img src="images/profile/{{user.profilePicUrl}}"></label>
+        <label for="photo"><img id="profilepic" src="images/profile/{{user.profilePicUrl}}"></label>
         <input type="file" name="photo" id="photo" onchange="form.submit()" hidden><br>
         <input type="submit" value="upload" hidden>
         </form>

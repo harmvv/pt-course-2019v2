@@ -147,6 +147,9 @@ ul.ulnav {
 .buckettest .omgeving input:not(#submitbutton) {
     display: none;
 }
+#profilepic:hover{
+    cursor: pointer;
+}
 
 main h4 {
     color: white;

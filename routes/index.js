@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
     }, function (err, user) {
      matchtesttype = user.type;
      console.log(matchtesttype);
-    User.find({type : matchtesttype}, function (err, users) { // Uses the User model to find data on the database
+    User.find({type : matchtesttype, _id :{ $ne: req.session.currentuser }}, function (err, users) { // Uses the User model to find data on the database
    res.render('index', { // render the index template
           users: users, //  the users are also called users in the template
           title: "Home",
