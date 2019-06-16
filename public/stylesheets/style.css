@@ -109,7 +109,8 @@ ul.ulnav {
 
 #titlematches {
     margin-left: 10px;
-    display: flex
+    display: flex;
+    justify-content: space-between
 }
 
 .title h1 {
@@ -130,6 +131,7 @@ ul.ulnav {
 
 .title div {
     display: flex;
+    
 }
 
 .omgeving {
@@ -293,7 +295,7 @@ h5 {
 }
 
 .bekijkbucketlist {
-    background-color: grey;
+    background-color: #989ea5;
     margin: 2px 5px;
 }
 
@@ -325,6 +327,7 @@ h2.timelinetitle {
     color: white;
     font-size: 20px;
     margin-top: 30px;
+    min-height:170px
 }
 
 .matchprofiel img {
@@ -334,4 +337,28 @@ h2.timelinetitle {
 
 .timeline .matchprofiel:nth-child(even) {
     background-color: #6DC4CD;
+}
+
+.bucketlink {
+    text-decoration: none;
+    color:white;
+
+}
+
+.bucketlink:visited{
+    color:white;
+}
+
+#jouwprofiel h5, .matchprofiel h5{
+    padding: 10px;
+}
+
+.profielcontainer {
+    margin-top:-20px;
+}
+
+.bekijkbucketlist{
+    padding: 0px 4px;
+    margin-top:-10px;
+    border-radius:10px
 }

@@ -13,13 +13,13 @@
       <div>
         <form  enctype="multipart/form-data" method="POST" >
         <label for="photo"><img src="images/profile/{{user.profilePicUrl}}"></label>
-        <input type="file" name="photo" id="photo" hidden><br>
-        <input type="submit" value="upload">
+        <input type="file" name="photo" id="photo" onchange="form.submit()" hidden><br>
+        <input type="submit" value="upload" hidden>
         </form>
       </div>
       <div class="profielinfo">
         <p><strong>{{user.iWant}}</strong></p>
-        <p>Jij zoekt een <strong>{{user.type}}</strong></p>
+        <p>Jij zoekt een <strong><a class="bucketlink" href="/buckettest">{{user.type}}</a></strong></p>
         <a> Instellingen</a>
         <a class="bekijkbucketlist">Bekijk bucketlist</a>
       </div>
@@ -38,6 +38,7 @@
           <img src="images/profile/{{profilePicUrl}}">
         </div>
         <div class="profielinfo">
+          <p>Ik zoek een <strong>{{type}}</strong></p>
           <p>{{iWant}}
           </p>
           <a> Reageer</a>

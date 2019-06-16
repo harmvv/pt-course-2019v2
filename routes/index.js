@@ -18,11 +18,13 @@ app.use('/images/', static('./public/images/profile'));
 router.get('/', function (req, res, next) {
   if (req.session.currentuser) {
     console.log("werkt nu" + " " + req.session.currentuser)
-    User.find({}, function (err, users) { // Uses the User model to find data on the database
-      User.findOne({
-        _id: req.session.currentuser._id
-      }, function (err, user) {
-        res.render('index', { // render the index template
+    User.findOne({
+      _id: req.session.currentuser._id
+    }, function (err, user) {
+     matchtesttype = user.type;
+     console.log(matchtesttype);
+    User.find({type : matchtesttype}, function (err, users) { // Uses the User model to find data on the database
+   res.render('index', { // render the index template
           users: users, //  the users are also called users in the template
           title: "Home",
           user: user
