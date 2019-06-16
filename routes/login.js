@@ -31,7 +31,6 @@ router.post('/login', function (req, res, next) {
       return res.status(500).send();
     } else if (!currentuser) {
       return res.status(404).send();
-
     }
     console.log(currentuser);
     req.session.currentuser = currentuser;

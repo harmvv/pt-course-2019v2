@@ -365,3 +365,7 @@ h2.timelinetitle {
     margin-top:-10px;
     border-radius:10px
 }
+
+form input[id="email"] {
+    text-transform: lowercase;
+}
