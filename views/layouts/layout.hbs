@@ -14,34 +14,59 @@
         <nav>
             <ul class="ulnav">
                 <li class="javahamburgermenu"><img class="hamburgericon" src="/images/menu.png"></li>
-                <noscript><li ><a href="/menu"><img class="hamburgericon" src="/images/menu.png"></a></li>
-                <style type="text/css">
-		.javahamburgermenu { display:none; }
-	</style></noscript>
+                <noscript>
+                    <form><input type="checkbox" class="hamburgernav" id="hamburgerform" name="hamburgerform"
+                            hidden><label for="hamburgerform">
+                            <li><img class="hamburgericonnoscript" src="/images/menu.png"></<img>
+                                <div class="hamburgernav">
+                                    <div class="hamburgerdiv">
+                                        <ul class="hamburgerul">
+                                            <li><img class="iconbucket" src="/images/iconbuckettest.png"></li>
+                                            <li><a method="get" href="/">Home</a></li>
+                                            <li><a>Jouw Matches</a></li>
+                                            <li><a href="buckettest">Buckettest</a></li>
+                                            <li><a>Bucketlist</a></li>
+                                            <li><a>Instellingen</a></li>
+                                            <li><a href="logout">Log-out</a></li>
+
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </label></form>
+                    <style type="text/css">
+                        .javahamburgermenu {
+                            display: none;
+                        }
+                    </style>
+                </noscript>
                 <li class="profilenav"><a href="/"><img src="/images/profile.png"></a></li>
-                <li><a ><img src="/images/chats.png"></a></li>
+                <li><a><img src="/images/chats.png"></a></li>
 
             </ul>
-            <div class="hamburgernav">
-                <button class="close">X</button>
-            <div class="hamburgerdiv">
-                <ul class="hamburgerul">
-                    <li><img class="iconbucket" src="/images/iconbuckettest.png"></li>
-                    <li><a method="get" href="/">Home</a></li>
-                    <li><a>Jouw Matches</a></li>
-                    <li><a href="buckettest">Buckettest</a></li>
-                    <li><a>Bucketlist</a></li>
-                    <li><a>Instellingen</a></li>    
-                    <li><a href="logout">Log-out</a></li>
-            
+<div class="hamburgernav">
+                                    <button class="close">X</button>
+                                    <div class="hamburgerdiv">
+                                        <ul class="hamburgerul">
+                                            <li><img class="iconbucket" src="/images/iconbuckettest.png"></li>
+                                            <li><a method="get" href="/">Home</a></li>
+                                            <li><a>Jouw Matches</a></li>
+                                            <li><a href="buckettest">Buckettest</a></li>
+                                            <li><a>Bucketlist</a></li>
+                                            <li><a>Instellingen</a></li>
+                                            <li><a href="logout">Log-out</a></li>
 
-            </ul>
-        </div>
-        
-        </div>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
         </nav>
     </header>
-{{{body}}}
-    </body>
-    <script src ="/javascripts/index.js"></script>
+    {{{body}}}
+</body>
+<script src="/javascripts/index.js"></script>
+
 </html>

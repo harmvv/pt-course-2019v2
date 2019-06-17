@@ -19,10 +19,17 @@ nav li a {
     margin-top: 0px;
 }
 
-
-.hamburgernavwithoutjava{
+input.hamburgernav:checked + label .hamburgernav{
     display: block;
-    margin-top:-20px;
+    margin-left:-10px;
+}
+.hamburgericonnoscript{
+    width:40px;
+}
+
+.hamburgernavwithoutjava {
+    display: block;
+    margin-top: -20px;
 }
 
 button.close {
@@ -130,7 +137,7 @@ ul.ulnav {
 
 .title div {
     display: flex;
-    
+
 }
 
 .omgeving {
@@ -146,7 +153,8 @@ ul.ulnav {
 .buckettest .omgeving input:not(#submitbutton) {
     display: none;
 }
-#profilepic:hover{
+
+#profilepic:hover {
     cursor: pointer;
 }
 
@@ -316,7 +324,7 @@ h1 {
     color: #9ABE22;
     font-size: 2em;
     margin-bottom: 0px;
-margin-left:10px;
+    margin-left: 10px;
 }
 
 #jouwprofiel {
@@ -329,7 +337,7 @@ margin-left:10px;
     color: white;
     font-size: 20px;
     margin-top: 30px;
-    min-height:170px
+    min-height: 170px
 }
 
 .matchprofiel img {
@@ -343,80 +351,87 @@ margin-left:10px;
 
 .bucketlink {
     text-decoration: none;
-    color:white;
+    color: white;
 
 }
 
-.bucketlink:visited{
-    color:white;
+.bucketlink:visited {
+    color: white;
 }
 
-#jouwprofiel h5, .matchprofiel h5{
+#jouwprofiel h5,
+.matchprofiel h5 {
     padding: 10px;
 }
 
 .profielcontainer {
-    margin-top:-20px;
+    margin-top: -20px;
 }
 
-.bekijkbucketlist{
+.bekijkbucketlist {
     padding: 0px 4px;
-    margin-top:-10px;
-    border-radius:10px
+    margin-top: -10px;
+    border-radius: 10px
 }
 
-.registreren, .login {
-    background-color:#43A4CF;
+.registreren,
+.login {
+    background-color: #43A4CF;
     display: block;
-    margin:10px;
-    padding:10px;
-    border-radius:10px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 
-.registreren label, .login label{ 
+.registreren label,
+.login label {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-display: block;
-margin-top:5px;
-color:white;
-font-size:20px;}
+    display: block;
+    margin-top: 5px;
+    color: white;
+    font-size: 20px;
+}
 
-.input{display: block;}
+.input {
+    display: block;
+}
 
 .formcenter {
-    margin-left:30%;
-    width:40%;
-    margin-top:5px;
+    margin-left: 30%;
+    width: 40%;
+    margin-top: 5px;
 }
 
-.registreren button, .login button{
-    width:20%;
-    margin-left:40%;
+.registreren button,
+.login button {
+    width: 20%;
+    margin-left: 40%;
     background-color: #9ABE22;
-    color:white;
-    padding:10px;
+    color: white;
+    padding: 10px;
     border-radius: 10px;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 
 
-.newregister button{
-    width:40%;
-    margin-left:30%;
-    background-color:#F9AE1F;
-    color:white;
-    font-size:15px;
+.newregister button {
+    width: 40%;
+    margin-left: 30%;
+    background-color: #F9AE1F;
+    color: white;
+    font-size: 15px;
 }
 
-.login img{
-width:20%;
-margin-left:40%;
+.login img {
+    width: 20%;
+    margin-left: 40%;
 }
 
 .registreren img {
-    width:20%;
-    margin-left:40%;  
+    width: 20%;
+    margin-left: 40%;
 }
