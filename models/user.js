@@ -5,6 +5,9 @@ var userSchema = new mongoose.Schema({
     password: {
         type: String
     },
+    imgUpload: 
+        { data: Buffer, contentType: String },
+    
     email: {
         type: String,
         unique: true
