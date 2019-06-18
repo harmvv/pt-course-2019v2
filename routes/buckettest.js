@@ -31,7 +31,7 @@ else {
 // Reroute to home after buckettest is completed
 router.post('/buckettest', function (req, res) { // when / gets post method
   console.log('new buckettest data');
-  var type = req.body.outcomeInput; // gets input from form bucketlist
+  var type = ""; // gets input from form bucketlist
   console.log(type); // log in to the console
   //  Profile.updateOne({}, { profileType: type });
   User.updateOne({
@@ -57,7 +57,6 @@ function calculateType(req) {
   var option1 = req.body.vacation
   var option2 = req.body.preferences
   var option3 = req.body.date
-  var outcomeInput = req.body.outcomeInput
   var outcome = Number(option1) + Number(option2) + Number(option3);
   console.log("werkt dit")
   console.log("test submit" + option1 + " " + option2 + " " + option3);
