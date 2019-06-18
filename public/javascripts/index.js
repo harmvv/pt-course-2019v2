@@ -35,28 +35,28 @@ close.addEventListener("click", openMenu);
 var template = $('#matchestemplate').html();
 
 
-function calculateType(event) {
-  // event.preventDefault();
-  // console.log("test submit")
-  var option1 = document.querySelector('input[name="vacation"]:checked').value
-  var option2 = document.querySelector('input[name="preferences"]').value
-  var option3 = document.querySelector('input[name="date"]:checked').value
-  var outcomeInput = document.querySelector('input[name="outcomeInput"]')
-  var outcome = Number(option1) + Number(option2) + Number(option3);
-  console.log("werkt dit")
-  console.log("test submit" + option1 + " " + option2 + " " + option3);
-  console.log(outcome);
-  var type = "";
-  if (outcome < 12) {
-    type = "Relaxer";
-  } else if (outcome > 11 && outcome < 20) {
-    type = "Ontdekker"
-  } else {
-    type = "Avonturier"
-  }
-  console.log(type)
-  outcomeInput.value = type
-};
+// function calculateType(event) {
+//   // event.preventDefault();
+//   // console.log("test submit")
+//   var option1 = document.querySelector('input[name="vacation"]:checked').value
+//   var option2 = document.querySelector('input[name="preferences"]').value
+//   var option3 = document.querySelector('input[name="date"]:checked').value
+//   var outcomeInput = document.querySelector('input[name="outcomeInput"]')
+//   var outcome = Number(option1) + Number(option2) + Number(option3);
+//   console.log("werkt dit")
+//   console.log("test submit" + option1 + " " + option2 + " " + option3);
+//   console.log(outcome);
+//   var type = "";
+//   if (outcome < 12) {
+//     type = "Relaxer";
+//   } else if (outcome > 11 && outcome < 20) {
+//     type = "Ontdekker"
+//   } else {
+//     type = "Avonturier"
+//   }
+//   console.log(type)
+//   outcomeInput.value = type
+// };
 
-var bucketForm = document.querySelector(".buckettest")
-bucketForm.addEventListener("submit", calculateType);
+// var bucketForm = document.querySelector(".buckettest")
+// bucketForm.addEventListener("submit", calculateType);

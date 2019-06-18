@@ -37,7 +37,8 @@ router.post('/buckettest', function (req, res) { // when / gets post method
   User.updateOne({
     _id: req.session.currentuser._id,
   }, {
-    type: type
+    
+    type: calculateType(req)
   }, function (err) {
 
     // update the type of the user
@@ -49,6 +50,31 @@ router.post('/buckettest', function (req, res) { // when / gets post method
 
   res.redirect('/')
 });
+
+function calculateType(req) {
+  // event.preventDefault();
+  // console.log("test submit")
+  var option1 = req.body.vacation
+  var option2 = req.body.preferences
+  var option3 = req.body.date
+  var outcomeInput = req.body.outcomeInput
+  var outcome = Number(option1) + Number(option2) + Number(option3);
+  console.log("werkt dit")
+  console.log("test submit" + option1 + " " + option2 + " " + option3);
+  console.log(outcome);
+  var type = "";
+  if (outcome < 12) {
+    type = "Relaxer";
+  } else if (outcome > 11 && outcome < 20) {
+    type = "Ontdekker"
+  } else {
+    type = "Avonturier"
+  }
+  console.log(type)
+  return type
+};
+
+
 
 
 
