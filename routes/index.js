@@ -10,7 +10,7 @@ var app = express();
 var expressValidator = require("express-validator")
 var expressSession = require("express-session");
 var multer = require("multer");
-const { static } = require('express');
+var { static } = require('express');
 app.use('/images/', static('./public/images/profile'));
 // Connection URL
 

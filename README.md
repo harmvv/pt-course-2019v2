@@ -4,7 +4,7 @@ Version  2 of my Tech project
 Project tech Harm van Verseveld
 
 This is a project to develop a datingapp
-For the whole proces see the wiki : https://github.com/harmvv/pt-course-18-19/wiki
+For the whole proces see the wiki : https://github.com/harmvv/pt-course-2019v2/wiki
 
 ## Build with
 
@@ -29,8 +29,11 @@ This will install al the needed packages from NPM
 
 ### Run the server
 ```bash
-Node index.js
+npm start
 ```
+
+### Attention   
+To get the application running you need the .env file. If you contact me I will send it to you.
 
 ## Special thanks to
 W3Schools for slider - https://www.w3schools.com/howto/howto_js_rangeslider.asp
