@@ -1,3 +1,5 @@
+![Icon](https://oege.ie.hva.nl/~versevh/afbeeldingen/icon/logo%20datingapp.png)
+
 # pt-course-2019v2
 Version  2 of my Tech project
 # pt-course-18-19
