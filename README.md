@@ -41,7 +41,7 @@ npm start
 To get the application running you need the .env file. If you contact me I will send it to you.
 
 ## Special thanks to
-W3Schools for slider - https://www.w3schools.com/howto/howto_js_rangeslider.asp
-Academind for Express and Mongoose - https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w
-Swapnil Singh for Image upload - https://www.youtube.com/channel/UCKbeI_RnkQsRAfji7fKlEVQ
-Jonny Kalambay for Deployment - https://www.youtube.com/channel/UCUm0chMKj4MA7q9CWZXWhiA
+* W3Schools for slider - https://www.w3schools.com/howto/howto_js_rangeslider.asp
+* Academind for Express and Mongoose - https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w
+* Swapnil Singh for Image upload - https://www.youtube.com/channel/UCKbeI_RnkQsRAfji7fKlEVQ
+* Jonny Kalambay for Deployment - https://www.youtube.com/channel/UCUm0chMKj4MA7q9CWZXWhiA
