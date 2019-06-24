@@ -150,9 +150,6 @@ ul.ulnav {
     margin: 10px;
 }
 
-.buckettest .omgeving input:not(#submitbutton) {
-    display: none;
-}
 
 #profilepic:hover {
     cursor: pointer;
@@ -179,7 +176,7 @@ main h4 {
 form img {
     border-radius: 50%;
     width: 27%;
-    margin: 0.5em;
+    margin: 0.58em;
 }
 
 .slidecontainer {
@@ -258,14 +255,26 @@ input:checked+label img {
 }
 
 #submitbutton {
+    width:90%;
     padding: 10px 80px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: #9ABE20;
     font-size: 20px;
     color: white;
     margin-bottom: 20px;
+display:inline;
+}
 
+
+.formbuttons {
+    margin-left:6%;
+width:41%;
+    background-color: #9ABE20;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+display:inline;
 }
 
 .divsubmit {
@@ -433,3 +442,55 @@ h1 {
     width: 20%;
     margin-left: 40%;
 }
+
+
+/* Style the form */
+#regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    min-width: 300px;
+  }
+  
+  /* Style the input fields */
+
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+    
+  }
+
+  .tabnojs{
+      display:block
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none; 
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  /* Mark the active step: */
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+  .steppen{
+      text-align:center;
+      margin-top:40px;}
