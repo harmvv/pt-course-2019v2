@@ -40,6 +40,10 @@ npm start
 ### Attention   
 To get the application running you need the .env file. If you contact me I will send it to you.
 
+### License 
+
+MIT https://github.com/harmvv/pt-course-2019v2/blob/master/license.txt
+
 ## Special thanks to
 * W3Schools for slider - https://www.w3schools.com/howto/howto_js_rangeslider.asp
 * Academind for Express and Mongoose - https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w
