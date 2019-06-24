@@ -9,8 +9,9 @@ var expressValidator = require("express-validator")
 var expressSession = require("express-session");
 var mongoose = require("mongoose");
 var multer = require("multer");
-require('dotenv').config();
 var mime = require('mime');
+require('dotenv').config();
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 

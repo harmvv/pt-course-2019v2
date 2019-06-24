@@ -1,18 +1,21 @@
-![Icon](https://oege.ie.hva.nl/~versevh/afbeeldingen/icon/logo%20datingapp.png)
+
 
 # pt-course-2019v2
-Version  2 of my Tech project
-# pt-course-18-19
+A datingapp wich find matches based on bucketlist's. Version 2 of my Tech project. https://buckettest.herokuapp.com/
+## pt-course-18-19
 Project tech Harm van Verseveld
 
-This is a project to develop a datingapp
+This is a project for developping a datingapp
 For the whole proces see the wiki : https://github.com/harmvv/pt-course-2019v2/wiki
+
+![Icon](https://oege.ie.hva.nl/~versevh/afbeeldingen/icon/logo%20datingapp.png)
 
 ## Build with
 
 * [Express](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 * [Mongodb](https://www.mongodb.com/) Access data directly from your frontend code, intelligently distribute data for global apps, trigger serverless functions in response to data changes, and much more.
 * [Handlebars](https://handlebarsjs.com/) provides the power necessary to let you build semantic templates effectively with no frustration.
+
 
 ## How to install this project
 
