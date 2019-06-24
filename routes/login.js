@@ -15,22 +15,32 @@ var expressSession = require("express-session");
 
 router.get('/login', function (req, res, next) {
   res.render('login', {
-    title: 'login Validation'
-
-
+    title: 'login Validation',
+    errors: req.session.errors
+  });
+  req.session.errors = null;
   });
 
-});
+
 
 router.post('/login', function (req, res, next) {
+  req.check('email').isEmail();
+  req.check('password').isLength({min: 4})
   User.findOne({
     email: req.body.email,
     password: req.body.password
   }, function (err, currentuser) {
-    if (err) {
+    var errors = req.validationErrors();
+    if (errors) {
+      req.session.errors = errors;
+      res.redirect('/')
       return res.status(500).send();
+     
     } else if (!currentuser) {
+      req.session.errors = errors;
+      res.redirect('/')
       return res.status(404).send();
+     
     }
     console.log(currentuser);
     req.session.currentuser = currentuser;

@@ -1,7 +1,11 @@
 {{!-- satus validation --}}
 
 <h1>Login</h1>
-
+{{# if errors }}
+        <section class="errors">
+           <p> Ongeldige inloggevens</p>
+        </section>
+    {{/if}}
 <form class="login" method="post">
     <img class="iconbucket" src="/images/iconbuckettest.png">
     <div class="input">
@@ -18,5 +22,5 @@
 </form>
 <br>
 <div class="newregisterdiv">
-<a class="newregister" href="/register"><button>New? Register here</button></a>
+<a class="newregister" href="/register"><button>Nieuw? Registreer hier</button></a>
 </div>

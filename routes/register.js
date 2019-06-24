@@ -27,7 +27,7 @@ router.get('/register', function (req, res, next) {
 
 // get the post form info
 router.post('/submit', function (req, res, next) {
-  req.check('email', 'Invalid email address').isEmail();
+  req.check('email', 'Geen geldig email address').isEmail();
   req.check('name', 'Vul je naam in').notEmpty();
   req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
   req.check('iwant', 'Vul iets in wat je nog gedaan wil hebben').notEmpty();
