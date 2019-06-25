@@ -419,16 +419,19 @@ h1 {
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
+    font-size:20px;
 }
 
 
 
 .newregister button {
-    width: 40%;
-    margin-left: 30%;
+    width: 45%;
+    margin-left: 27.5%;
     background-color: #F9AE1F;
     color: white;
-    font-size: 15px;
+    padding:10px;
+    border-radius:50px;
+    font-size: 20px;
 }
 
 .login img {
@@ -497,3 +500,5 @@ h1 {
           background-color:#5dba3c;
           color:white;
       }
+
+      
