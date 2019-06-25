@@ -44,7 +44,7 @@ router.post('/login', function (req, res, next) {
     }
     console.log(currentuser);
     req.session.currentuser = currentuser;
-    req.session.save(function (currentuser) {
+    req.session.save(function (currentuser) {// hier wordt de session aangemaakt
 
     });
     res.redirect('/')

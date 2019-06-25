@@ -14,18 +14,17 @@ var expressSession = require("express-session");
 
 
 
-// buckettest route
+// buckettest route with session succes validation
 router.get('/buckettest', function (req, res, next) {
-  if(req.session.currentuser){
-  res.render('buckettest', {
-    success: req.session.success,
-    errors: req.session.errors
-  }); // renders the buckettest template on /buckettest
-  req.session.errors = null;
-}
-else {
-  res.redirect('/login')
-}
+  if (req.session.currentuser) {
+    res.render('buckettest', {
+      success: req.session.success,
+      errors: req.session.errors
+    }); // renders the buckettest template on /buckettest
+    req.session.errors = null;
+  } else {
+    res.redirect('/login')
+  }
 });
 
 // Reroute to home after buckettest is completed
@@ -35,22 +34,20 @@ router.post('/buckettest', function (req, res) { // when / gets post method
   console.log(type); // log in to the console
   //  Profile.updateOne({}, { profileType: type });
   User.updateOne({
-    _id: req.session.currentuser._id,
+    _id: req.session.currentuser._id, // update the user with the session id
   }, {
-    
-    type: calculateType(req)
+    type: calculateType(req) // calls the function calculatetype
   }, function (err) {
 
     // update the type of the user
     if (err) {
       throw err;
     }
-    //...
   });
-
   res.redirect('/')
 });
 
+// calculates wich type you are
 function calculateType(req) {
   // event.preventDefault();
   // console.log("test submit")

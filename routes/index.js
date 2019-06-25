@@ -37,7 +37,7 @@ router.get('/', function (req, res, next) {
 });
  
  
-// SET STORAGE
+// SET STORAGE for saving image
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/images/profile')
