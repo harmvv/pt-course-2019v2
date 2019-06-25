@@ -412,8 +412,8 @@ h1 {
 
 .registreren button,
 .login button {
-    width: 20%;
-    margin-left: 40%;
+    width: 30%;
+    margin-left: 35%;
     background-color: #9ABE22;
     color: white;
     padding: 10px;
@@ -501,4 +501,5 @@ h1 {
           color:white;
       }
 
+      
       

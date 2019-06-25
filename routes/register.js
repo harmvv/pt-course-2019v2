@@ -29,7 +29,7 @@ router.get('/register', function (req, res, next) {
 router.post('/submit', function (req, res, next) {
   req.check('email', 'Geen geldig email address').isEmail();
   req.check('name', 'Vul je naam in').notEmpty();
-  req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
+  req.check('password', 'password komt niet overeen').isLength({min: 4}).equals(req.body.confirmPassword);
   req.check('iwant', 'Vul iets in wat je nog gedaan wil hebben').notEmpty();
   var errors = req.validationErrors();
   if (errors) {
