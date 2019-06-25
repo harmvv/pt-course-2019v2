@@ -15,6 +15,7 @@ require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, '/public')));
 
+//require all the routes
 var indexRouter = require('./routes/index');
 var buckettestRouter = require('./routes/buckettest');
 var registerRouter = require('./routes/register');
@@ -22,7 +23,7 @@ var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var menuRouter = require('./routes/menu');
 
-var app = express();
+
 
 // view engine setup
 app.engine("hbs", hbs({
