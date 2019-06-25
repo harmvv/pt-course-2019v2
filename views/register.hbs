@@ -1,4 +1,5 @@
 {{!-- satus validation --}}
+  <main>
   <h1>Registeren</h1>
   {{# if success }}
     <section class="success">
@@ -19,7 +20,7 @@
     <img class="iconbucket" src="/images/iconbuckettest.png">
         <div class="input">
             <label for="email">E-Mail</label><br>
-            <input class="formcenter" type="text" id="email" name="email">
+            <input class="formcenter" type="text" id="email" name="email" >
         </div>
               <div class="input">
             <label for="name">Name</label><br>
@@ -40,6 +41,7 @@
         <button class="registersubmit"type="submit">Registreer</button>
     </form>
 {{/if}}
+</main>
  {{!-- end status validatoin --}}
 
 {{!-- mongodb form --}}

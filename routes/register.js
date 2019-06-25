@@ -51,7 +51,7 @@ router.post('/submit', function (req, res, next) {
     const user = new User({
       name: name,
       email: email,
-      type:" ...? Nog geen matches, doe de buckettest",
+      type:" ...? Nog geen matches, doe de buckettest en upload een foto hiernaast",
       password: password,
       memberSince: year,
       profilePicUrl: "newprofile.png",
